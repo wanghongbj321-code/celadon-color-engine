@@ -28,7 +28,8 @@ It is designed for teams that want a calm, scalable interface foundation where l
 - `components/`: buttons, cards, forms, tables, timelines, selectors, modal surfaces, titles, and more
 - `utilities/`: helpers for layout and interaction support
 - `desktop.css`, `web-mobile.css`, `mobile.css`: platform adaptation layers
-- `samples/basic/`: a fuller design system showcase with semantic token rendering and theme switching
+- `samples/basic/`: a fuller desktop-oriented design system showcase
+- `samples/mobile/`: a mobile-first showcase using `web-mobile.css`
 
 ## Project Structure
 
@@ -156,17 +157,25 @@ The repository currently includes reusable modules such as:
 - `u-celadon-sr-only`
 - `u-celadon-hide-scrollbar`
 
-## Showcase Sample
+## Showcase Samples
 
-The sample in `samples/basic/` is no longer just a minimal demo. It now acts as a broader showcase of the design system and demonstrates:
+The repository now includes two showcase entry points:
+
+- `samples/basic/`: a desktop-oriented design system overview with spacious layout, semantic token rendering, and broader component coverage
+- `samples/mobile/`: a mobile-first showcase focused on compact rhythm, touch-friendly controls, and `web-mobile.css`
+
+Together they demonstrate:
 
 - day/night theme switching
 - semantic color token rendering
 - brand accent usage
-- layered surfaces and spacious layout
-- buttons, status badges, cards, forms, tables, and typography hierarchy
+- platform-aware layout adaptation
+- buttons, status badges, cards, forms, tables, typography hierarchy, and touch-oriented surfaces
 
-If you want to preview the system quickly, open `samples/basic/index.html`.
+Quick preview entry points:
+
+- `samples/basic/index.html`
+- `samples/mobile/index.html`
 
 ## Recommended Usage Guidelines
 
