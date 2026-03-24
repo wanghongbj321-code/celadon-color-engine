@@ -1,0 +1,30 @@
+/* web-mobile.css - Web mobile platform remap layer
+ * Constraint: platform files only remap standard tokens and platform capabilities.
+ * No component visual overrides are allowed here.
+ */
+
+:root {
+  --hit-area: 44px;
+  --hit-area-large: 44px;
+
+  /* Compact spacing rhythm for mobile web screens. */
+  --space-3: 0.625rem;
+  --space-4: 0.875rem;
+  --space-5: 1rem;
+  --space-6: 1.25rem;
+
+  /* Typography scale remap for narrow mobile viewport. */
+  --fs-sm: 0.8125rem;
+  --fs-md: 0.875rem;
+  --fs-lg: 1rem;
+  --fs-xl: 1.125rem;
+
+  --radius-lg: 0.75rem;
+  --radius-xl: 0.875rem;
+}
+
+@media (hover: none), (pointer: coarse) {
+  :root {
+    --ease-fast: 0.12s ease;
+  }
+}

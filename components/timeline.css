@@ -1,0 +1,111 @@
+/* =======================================
+ * Celadon Components — Timeline (Vertical Only)
+ * ======================================= */
+@layer components {
+  .celadon-timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+
+    --timeline-length: 300px;
+    --timeline-dot-size: 12px;
+    --timeline-line-width: var(--bw-2);
+    --timeline-line-color: var(--c-border-light);
+    --timeline-dot-bg: var(--c-bg-card);
+    --timeline-dot-border: var(--c-border-medium);
+    --timeline-active-color: var(--c-brand);
+    --timeline-active-ring: color-mix(in srgb, var(--c-brand) 20%, transparent);
+
+    height: var(--timeline-length);
+    min-height: var(--timeline-length);
+  }
+
+  .celadon-timeline__dot {
+    width: var(--timeline-dot-size);
+    height: var(--timeline-dot-size);
+    border-radius: var(--radius-full);
+    background-color: var(--timeline-dot-bg);
+    border: var(--bw-2) solid var(--timeline-dot-border);
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+    transition:
+      background-color var(--ease-fast),
+      border-color var(--ease-fast),
+      box-shadow var(--ease-fast),
+      transform var(--ease-fast);
+  }
+
+  .celadon-timeline__dot--active {
+    background-color: var(--timeline-active-color);
+    border-color: var(--timeline-active-color);
+    box-shadow: 0 0 0 var(--bw-2) var(--timeline-active-ring);
+    transform: scale(1.1);
+  }
+
+  .celadon-timeline__line {
+    width: var(--timeline-line-width);
+    background-color: var(--timeline-line-color);
+    flex: 1;
+    min-height: var(--space-5);
+    transition: background-color var(--ease-fast);
+  }
+
+  .celadon-timeline--small {
+    --timeline-dot-size: var(--space-2);
+  }
+
+  .celadon-timeline--medium {
+    --timeline-dot-size: var(--space-3);
+  }
+
+  .celadon-timeline--large {
+    --timeline-dot-size: var(--space-5);
+  }
+
+  .celadon-timeline--minimal {
+    --timeline-dot-bg: transparent;
+    --timeline-dot-border: var(--c-border-light);
+    --timeline-line-color: var(--c-border-light);
+  }
+
+  .celadon-timeline--minimal .celadon-timeline__dot {
+    border-width: var(--bw-1);
+  }
+
+  .celadon-timeline--minimal .celadon-timeline__dot--active {
+    box-shadow: 0 0 0 var(--bw-1) var(--timeline-active-ring);
+  }
+
+  .theme-night .celadon-timeline {
+    --timeline-line-color: var(--c-border-medium);
+    --timeline-dot-bg: transparent;
+    --timeline-dot-border: var(--c-border-medium);
+    --timeline-active-color: var(--c-brand);
+    --timeline-active-ring: color-mix(in srgb, var(--c-brand) 25%, transparent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .celadon-timeline__dot {
+      transition: none;
+    }
+
+    .celadon-timeline__dot--active {
+      transform: none;
+    }
+  }
+
+  @media (prefers-contrast: high) {
+    .celadon-timeline {
+      --timeline-line-color: CanvasText;
+      --timeline-dot-border: CanvasText;
+    }
+
+    .celadon-timeline__dot--active {
+      background-color: CanvasText;
+      border-color: CanvasText;
+      box-shadow: none;
+    }
+  }
+}

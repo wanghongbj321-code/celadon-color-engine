@@ -1,0 +1,34 @@
+/* desktop.css - Web desktop platform remap layer
+ * Constraint: platform files only remap standard tokens and platform capabilities.
+ * No component visual overrides are allowed here.
+ */
+
+:root {
+  --hit-area: 36px;
+  --hit-area-large: 44px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :root {
+    --ease-fast: 0.16s ease;
+  }
+}
+
+/* Desktop scrollbar tuning (token-driven, no fallback colors). */
+::-webkit-scrollbar {
+  width: var(--space-2);
+  height: var(--space-2);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--c-bg-card);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--c-border-medium);
+  border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-text-secondary);
+}

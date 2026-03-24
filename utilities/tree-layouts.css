@@ -1,0 +1,244 @@
+/* =======================================
+ * Celadon Utilities — Tree Layouts
+ * - 公共结构：层级缩进、连接线、交互态
+ * - 依赖 Celadon tokens (spacing, radius, colors)
+ * - 结合 Iconify + Phosphor 图标使用
+ * ======================================= */
+@layer utilities {
+  .celadon-tree {
+    --tree-indent: calc(var(--space-6) + var(--space-2));
+    --tree-node-gap: var(--space-2);
+    --tree-node-padding-y: var(--space-3);
+    --tree-node-padding-x: var(--space-4);
+    --tree-node-radius: var(--radius-lg);
+    --tree-connector-color: var(--c-border-light);
+    --tree-node-border-color: var(--c-border-light);
+    --tree-node-border-hover: var(--c-border-medium);
+    --tree-node-shadow: none;
+    --tree-node-shadow-hover: none;
+    --tree-node-shadow-active: none;
+    --tree-node-bg-hover: transparent;
+    --tree-node-bg-active: transparent;
+    --tree-node-text-active: var(--c-text-body);
+    display: flex;
+    flex-direction: column;
+    gap: var(--tree-node-gap);
+    color: var(--c-text-body);
+    font-family: var(--font-sans);
+  }
+
+  .celadon-tree__node {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--tree-node-padding-y) var(--tree-node-padding-x);
+    border-radius: var(--tree-node-radius);
+    line-height: var(--lh-normal);
+    background-color: transparent;
+    border: var(--bw-1) solid var(--tree-node-border-color);
+    box-shadow: none;
+    width: 100%;
+    transition:
+      background-color var(--ease-fast),
+      border-color var(--ease-fast),
+      box-shadow var(--ease-fast),
+      color var(--ease-fast),
+      transform var(--ease-fast);
+    transform: translateZ(0);
+  }
+
+  .celadon-tree__node:where(:hover, :focus-within) {
+    background-color: transparent;
+    border-color: var(--tree-node-border-hover);
+    box-shadow: none;
+  }
+
+  .celadon-tree__node--active {
+    background-color: transparent;
+    color: var(--tree-node-text-active);
+    border-color: var(--c-border-medium);
+    box-shadow: none;
+  }
+
+  .celadon-tree__node--active:where(:hover, :focus-within) {
+    box-shadow: var(--tree-node-shadow-active);
+  }
+
+  .celadon-tree__node--active .celadon-tree__meta {
+    color: currentColor;
+  }
+
+  .celadon-tree__icon {
+    width: var(--hit-area);
+    height: var(--hit-area);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--c-text-secondary);
+    flex-shrink: 0;
+  }
+
+  .celadon-tree__label {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    letter-spacing: var(--ls-normal);
+  }
+
+  .celadon-tree__meta {
+    display: inline-flex;
+    align-items: center;
+    font-size: var(--fs-xs);
+    color: var(--c-text-secondary);
+    transition: color var(--ease-fast);
+    margin-inline-start: var(--space-2);
+  }
+
+  .celadon-tree__text {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex: 1;
+    min-width: 0;
+  }
+
+  .celadon-tree__label,
+  .celadon-tree__meta {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .celadon-tree__children {
+    margin-inline-start: var(--tree-indent);
+    padding-inline-start: var(--space-3);
+    border-inline-start: 1px solid var(--tree-connector-color);
+    display: flex;
+    flex-direction: column;
+    gap: var(--tree-node-gap);
+  }
+
+  .celadon-tree__children:empty {
+    display: none;
+  }
+
+  .celadon-tree__children[hidden] {
+    display: none;
+  }
+
+  .celadon-tree__toggle {
+    width: var(--hit-area);
+    height: var(--hit-area);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    border: var(--bw-1) solid transparent;
+    background-color: transparent;
+    transition:
+      background-color var(--ease-fast),
+      border-color var(--ease-fast),
+      box-shadow var(--ease-fast),
+      color var(--ease-fast);
+    color: var(--c-text-secondary);
+    flex-shrink: 0;
+  }
+
+  .celadon-tree__toggle:hover {
+    color: var(--c-text-body);
+    background-color: var(--c-bg-page);
+  }
+
+  .celadon-tree__node--branch > .celadon-tree__toggle[aria-expanded='true'] {
+    color: var(--c-text-body);
+  }
+
+  .celadon-tree__toggle:focus-visible {
+    outline: none;
+    border-color: var(--c-border-medium);
+    box-shadow: 0 0 0 2px var(--c-border-medium);
+  }
+
+  .celadon-tree__node--disabled {
+    color: var(--c-text-disabled);
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  .celadon-tree__node--disabled .celadon-tree__icon {
+    color: var(--c-text-disabled);
+  }
+
+  .celadon-tree__badge {
+    margin-inline-start: auto;
+    padding-inline: var(--space-2);
+    padding-block: calc(var(--space-1) / 2);
+    border-radius: var(--radius-full);
+    background-color: var(--c-bg-card);
+    color: var(--c-text-secondary);
+    font-size: var(--fs-xs);
+    font-weight: var(--fw-semibold);
+    flex-shrink: 0;
+  }
+
+  .celadon-tree__node--active .celadon-tree__badge {
+    background-color: transparent;
+    color: currentColor;
+    border: 1px solid currentColor;
+  }
+
+  .celadon-tree__line {
+    position: absolute;
+    inset-inline-start: calc(var(--space-3) * -1);
+    top: 0;
+    bottom: 0;
+    width: var(--space-3);
+    pointer-events: none;
+  }
+
+  .celadon-tree__line::before,
+  .celadon-tree__line::after {
+    content: '';
+    position: absolute;
+    background: var(--tree-connector-color);
+  }
+
+  .celadon-tree__line::before {
+    inset-inline-start: calc(var(--space-3) - 1px);
+    top: var(--space-2);
+    bottom: calc(var(--space-2) * -1);
+    width: 1px;
+  }
+
+  .celadon-tree__line::after {
+    inset-inline-start: 0;
+    top: 50%;
+    width: calc(var(--space-3) - var(--space-1));
+    height: 1px;
+    transform: translateY(-50%);
+  }
+
+  .celadon-tree__line--last::before {
+    bottom: 50%;
+  }
+
+  /* 夜间适配：调整连接线和交互背景 */
+  .theme-night .celadon-tree {
+    --tree-connector-color: var(--c-border-light);
+    --tree-node-border-color: var(--c-border-light);
+    --tree-node-border-hover: var(--c-border-medium);
+    --tree-node-shadow: none;
+    --tree-node-shadow-hover: none;
+    --tree-node-shadow-active: none;
+    --tree-node-bg-hover: transparent;
+    --tree-node-bg-active: transparent;
+    --tree-node-text-active: var(--c-body-night);
+  }
+
+  .theme-night .celadon-tree__toggle:focus-visible {
+    box-shadow: 0 0 0 2px var(--c-border-medium);
+  }
+}
+

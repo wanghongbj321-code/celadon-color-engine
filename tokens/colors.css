@@ -1,0 +1,138 @@
+/* =======================================
+ * Celadon Color Engine — Color Tokens (no @layer)
+ * - 语义优先；日间为默认；夜间通过 Theme Remaps 切换
+ * ======================================= */
+:root {
+  /* 让原生控件（滚动条/表单）跟随主题 */
+  color-scheme: light;
+
+  /* ===== Endpoints ===== */
+  --c-white: #ffffff;
+  --c-black: #000000;
+
+  /* ===== Physical Grays (固定物理灰阶) ===== */
+  --c-gray-50: #f9fafb;
+  --c-gray-100: #f3f4f6;
+  --c-gray-200: #e5e7eb;
+  --c-gray-300: #d1d5db;
+  --c-gray-400: #9ca3af;
+  --c-gray-500: #6b7280;
+  --c-gray-600: #4b5563;
+  --c-gray-700: #374151;
+  --c-gray-800: #1f2937;
+  --c-gray-900: #111827;
+
+  /* ===== Semantic aliases — Day defaults ===== */
+  --c-bg-page: var(--c-gray-50);
+  --c-bg-card: var(--c-gray-100);
+  --c-border-light: var(--c-gray-200); /* 浅边框 - 卡片/输入框 */
+  --c-border-medium: var(--c-gray-300); /* 中等边框 - 分割线等 */
+  --c-text-secondary: var(--c-gray-500);
+  --c-text-body: var(--c-gray-700);
+  --c-text-title: var(--c-gray-900);
+
+  /* ===== 分隔线系统（演示文件使用） ===== */
+  --c-divider: var(--c-gray-200); /* 标准分隔线 */
+  --c-divider-subtle: var(--c-gray-100); /* 微妙分隔线 */
+
+  /* ===== 文字系统扩展 ===== */
+  --c-text-muted: var(--c-gray-500);
+  --c-text-weak: var(--c-gray-400);
+  --c-text-inverse: var(--c-white);
+  --c-text-disabled: var(--c-gray-400);
+  --c-text-placeholder: var(--c-gray-400);
+  --c-text-accent: var(--c-accent-day);
+
+  /* ===== 状态色（文本） ===== */
+  --c-text-success: #059669; /* emerald-600-ish */
+  --c-text-error: #dc2626; /* red-600 */
+  --c-text-warning: #d97706; /* amber-600 */
+  --c-text-info: var(--c-accent-day);
+
+  /* ===== 状态背景（浅底用于提示） ===== */
+  --c-bg-success: #ecfdf5;
+  --c-bg-error: #fef2f2;
+  --c-bg-warning: #fffbeb;
+  --c-bg-info: #f0fdfa;
+
+  /* ===== 状态实体主色（用于状态点、状态线、图标强调、边框强调） ===== */
+  --c-success:  #16a34a; /* green-600 */
+  --c-error:    #dc2626; /* red-600 */
+  --c-warning:  #d97706; /* amber-600 */
+  --c-info:     var(--c-accent-day); /* teal-500，与系统 accent 保持一致 */
+
+  /* ===== 通用实体主色 ===== */
+  --c-brand:    var(--c-accent-day); /* 品牌主色：CTA 按钮背景、主要操作强调（teal-500） */
+  --c-disabled: var(--c-gray-400);   /* 禁用态：图标、文字、边框的统一禁用着色（gray-400） */
+
+  /* ===== 背景扩展 ===== */
+  --c-bg-elev: var(--c-white); /* 浮层 */
+  --c-bg-overlay: rgba(0, 0, 0, 0.5); /* 模态遮罩 */
+  --c-bg-input: var(--c-white); /* 输入背景 */
+  --c-bg-selected: var(--c-gray-100); /* 选中态背景（Segmented Control、菜单选中项）*/
+  --c-bg-disabled: var(--c-gray-300); /* 禁用态背景（如发送按钮禁用）*/
+
+  /* ===== 链接 ===== */
+  --c-link: var(--c-accent-day);
+  --c-link-hover: #0f766e; /* teal-600 */
+
+  /* ===== Day specifics（便于直连消费） ===== */
+  --c-heading-day: #111827; /* gray-900 */
+  --c-body-day: #374151; /* gray-700 */
+  --c-border-day: #e5e7eb; /* gray-200 */
+  --c-card-bg-day: #ffffff;
+  --c-bg-base-day: #f9fafb; /* gray-50 */
+
+  /* ===== Night base tokens（仅作为夜间 remap 的目标） ===== */
+  --c-heading-night: #f9fafb;
+  --c-body-night: #d1d5db;
+  --c-border-night-light: rgba(255, 255, 255, 0.2);
+  --c-border-night-dark: rgba(255, 255, 255, 0.15);
+  --c-card-bg-night: #0f172a; /* 夜间卡片使用标准深色背景 - slate-900 */
+  --c-bg-base-night: #0f172a; /* slate-900-ish */
+  --c-bg-g1-night: #134e4a; /* 可用于分层 */
+  --c-bg-g2-night: #134e4a;
+
+  /* ===== Night 状态色 tokens ===== */
+  --c-text-success-night: #10b981; /* emerald-500，比日间 emerald-600 亮一级 */
+  --c-text-error-night: #ef4444; /* red-500 */
+  --c-text-warning-night: #f59e0b; /* amber-500 */
+  --c-text-info-night: var(--c-accent-night); /* teal-400 */
+
+  --c-bg-success-night: rgba(16, 185, 129, 0.15); /* 半透明绿，适合深色背景 */
+  --c-bg-error-night: rgba(239, 68, 68, 0.15); /* 半透明红 */
+  --c-bg-warning-night: rgba(245, 158, 11, 0.15); /* 半透明黄 */
+  --c-bg-info-night: rgba(45, 212, 191, 0.15); /* 半透明青 */
+
+  /* ===== Accent — QingStone（青石/teal）===== */
+  --c-accent-day: #14b8a6; /* teal-500 */
+  --c-accent-text-day: #ffffff;
+  --c-accent-night: #2dd4bf; /* teal-400 */
+  --c-accent-text-night: #0f172a;
+
+  /* 主色交互状态（按日/夜分档） */
+  --c-accent-hover-day: #0f766e; /* teal-600 */
+  --c-accent-active-day: #0d9488; /* teal-700 */
+  --c-accent-hover-night: #14b8a6; /* teal-500 */
+  --c-accent-active-night: #0f766e; /* teal-600 */
+
+  /* ===== Brand — QingStone 体系 =====
+   * 做法：定义 day/night 两套品牌色；通用别名默认指向 day。
+   * 夜间通过 Theme Remaps 把通用别名重定向到 *-night。
+   */
+  /* Day set */
+  --brand-rail-day: #14b8a6; /* teal-500 */
+  --brand-node-day: #0d9488; /* teal-600 */
+  --brand-ring-day: #2dd4bf; /* teal-400 */
+
+  /* Night set（你要求的这一组） */
+  --brand-rail-night: #2dd4bf; /* teal-400 */
+  --brand-node-night: #5eead4; /* teal-300 */
+  --brand-ring-night: #99f6e4; /* teal-200 */
+
+  /* 通用别名（默认=day），由 Theme Remaps 在夜间改绑为 *-night */
+  --brand-rail: var(--brand-rail-day);
+  --brand-node: var(--brand-node-day);
+  --brand-ring: var(--brand-ring-day);
+}
+

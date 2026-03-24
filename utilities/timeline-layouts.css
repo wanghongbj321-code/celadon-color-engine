@@ -1,0 +1,229 @@
+/* =======================================
+ * Timeline 布局辅助类
+ * - 提供常用的 timeline + content 布局模板
+ * - 基于 CSS Grid 和 Flexbox 的响应式布局
+ * ======================================= */
+@layer utilities {
+  /* ===== 基础时间线布局容器 ===== */
+  .timeline-layout {
+    display: flex;
+    gap: var(--space-6);
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .timeline-layout--vertical {
+    flex-direction: row;
+  }
+
+  .timeline-layout--compact {
+    gap: var(--space-4);
+  }
+
+  .timeline-layout--spacious {
+    gap: var(--space-8);
+  }
+
+  /* ===== 时间线区域 ===== */
+  .timeline-area {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    padding-top: var(--space-2);
+  }
+
+  /* ===== 内容区域 ===== */
+  .timeline-content {
+    flex: 1;
+    min-width: 0; /* 防止内容溢出 */
+    text-align: left;
+  }
+
+  .timeline-content--sections {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16); /* 与时间线圆点间距对应 */
+    text-align: left;
+  }
+
+  .timeline-content--compact {
+    gap: var(--space-12);
+    text-align: left;
+  }
+
+  .timeline-content--spacious {
+    gap: var(--space-20);
+    text-align: left;
+  }
+
+  /* ===== 内容项样式 ===== */
+  .timeline-item {
+    padding-top: var(--space-1); /* 与圆点对齐 */
+    text-align: left;
+  }
+
+  .timeline-item__title {
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-semibold);
+    color: var(--c-text-title);
+    margin: 0 0 var(--space-2) 0;
+    line-height: var(--lh-tight);
+    text-align: left;
+  }
+
+  .timeline-item__subtitle {
+    font-size: var(--fs-sm);
+    color: var(--c-text-secondary);
+    font-style: italic;
+    margin: 0 0 var(--space-3) 0;
+    line-height: var(--lh-normal);
+    text-align: left;
+  }
+
+  .timeline-item__description {
+    font-size: var(--fs-base);
+    color: var(--c-text-body);
+    line-height: var(--lh-relaxed);
+    margin: 0;
+    text-align: left;
+  }
+
+  .timeline-item__description + .timeline-item__description {
+    margin-top: var(--space-3);
+  }
+
+  /* ===== 预设布局模板 ===== */
+
+  /* 教学步骤布局 - 适用于课程、教程等 */
+  .timeline-layout--tutorial {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-6);
+  }
+
+  .timeline-layout--tutorial .timeline-area {
+    padding-top: var(--space-4);
+  }
+
+  .timeline-layout--tutorial .timeline-content--sections {
+    gap: var(--space-20); /* 教学步骤间距更大 */
+  }
+
+  .timeline-layout--tutorial .timeline-item__title {
+    font-size: var(--fs-xl);
+    font-weight: var(--fw-bold);
+  }
+
+  /* 流程展示布局 - 适用于工作流、操作步骤等 */
+  .timeline-layout--process {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .timeline-layout--process .timeline-content--sections {
+    gap: var(--space-12);
+  }
+
+  .timeline-layout--process .timeline-item__title {
+    font-size: var(--fs-lg);
+  }
+
+  /* 紧凑布局 - 适用于侧边栏、小空间等 */
+  .timeline-layout--compact-view {
+    max-width: 600px;
+    gap: var(--space-3);
+  }
+
+  .timeline-layout--compact-view .timeline-content--sections {
+    gap: var(--space-8);
+  }
+
+  .timeline-layout--compact-view .timeline-item__title {
+    font-size: var(--fs-base);
+  }
+
+  .timeline-layout--compact-view .timeline-item__subtitle {
+    font-size: var(--fs-xs);
+  }
+
+  .timeline-layout--compact-view .timeline-item__description {
+    font-size: var(--fs-sm);
+  }
+
+  /* ===== 夜间主题适配 ===== */
+  .theme-night .timeline-item__title {
+    color: var(--c-text-title-night);
+  }
+
+  .theme-night .timeline-item__subtitle {
+    color: var(--c-text-secondary-night);
+  }
+
+  .theme-night .timeline-item__description {
+    color: var(--c-text-body-night);
+  }
+
+  /* ===== 响应式设计 ===== */
+  @media (max-width: 768px) {
+    .timeline-layout {
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .timeline-layout--vertical {
+      flex-direction: column;
+    }
+
+    .timeline-area {
+      align-self: center;
+      padding-top: 0;
+    }
+
+    .timeline-content--sections {
+      gap: var(--space-8);
+    }
+
+    .timeline-layout--tutorial {
+      padding: var(--space-6) var(--space-4);
+    }
+
+    .timeline-layout--tutorial .timeline-content--sections {
+      gap: var(--space-12);
+    }
+
+    .timeline-item__title {
+      font-size: var(--fs-lg) !important;
+    }
+
+    .timeline-item__subtitle {
+      font-size: var(--fs-sm) !important;
+    }
+
+    .timeline-item__description {
+      font-size: var(--fs-sm) !important;
+    }
+  }
+
+  /* ===== 打印样式 ===== */
+  @media print {
+    .timeline-layout {
+      gap: var(--space-4);
+      break-inside: avoid;
+    }
+
+    .timeline-item {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .timeline-item__title {
+      color: black !important;
+    }
+
+    .timeline-item__description {
+      color: black !important;
+    }
+  }
+}
+

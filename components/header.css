@@ -1,0 +1,256 @@
+/* =======================================
+ * Celadon Components — Header
+ * - 使用中性灰色系，遵循color engine设计规范
+ * - 支持日间/夜间主题切换
+ * - 包含分隔线和阴影效果
+ * ======================================= */
+@layer components {
+  .m-header-glass {
+    background-color: color-mix(in srgb, var(--c-bg-card) 80%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    /* 分隔线样式 */
+    border-bottom: 1px solid var(--c-border-light);
+
+    /* 阴影效果 */
+    box-shadow: var(--shadow-1);
+  }
+
+  /* 夜间主题适配 */
+  .theme-night .m-header-glass {
+    background-color: color-mix(in srgb, var(--c-bg-card) 90%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    /* 夜间分隔线 */
+    border-bottom-color: var(--c-border-night-light);
+
+    /* 夜间阴影 */
+    box-shadow: var(--shadow-1);
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 640px) {
+    .m-header-glass {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+  }
+
+  /* 无障碍支持 */
+  @media (prefers-reduced-motion: reduce) {
+    .m-header-glass {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+  }
+}
+
+/* Avatar */
+.m-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-border-light);
+  color: var(--c-text-title);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-sm);
+}
+.m-avatar-initial {
+  transform: translateY(1px);
+}
+
+/* Dropdown menu */
+.m-header-menu {
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-border-light);
+  border-radius: 12px;
+  box-shadow: var(--shadow-3);
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* 夜间主题菜单样式 */
+.theme-night .m-header-menu {
+  background: color-mix(in srgb, var(--c-bg-card) 95%, transparent);
+  border-color: var(--c-border-night-light);
+  box-shadow: var(--shadow-4);
+}
+
+.m-header-menu__section + .m-header-menu__section {
+  border-top: 1px solid var(--c-border-light);
+}
+
+.theme-night .m-header-menu__section + .m-header-menu__section {
+  border-top-color: var(--c-border-night-light);
+}
+
+.m-header-menu__title {
+  padding: 8px 12px;
+  font-size: var(--fs-xs);
+  color: var(--c-text-secondary);
+  font-weight: var(--fw-medium);
+  background: color-mix(in srgb, var(--c-bg-page) 40%, transparent);
+}
+
+.theme-night .m-header-menu__title {
+  background: color-mix(in srgb, var(--c-bg-base-night) 40%, transparent);
+}
+
+.m-header-menu__list {
+  padding: 4px;
+}
+
+.m-header-menu__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: var(--c-text-body);
+  text-decoration: none;
+  transition: all var(--ease-fast);
+  margin: 2px 4px;
+}
+
+.m-header-menu__item:hover {
+  background: color-mix(in srgb, var(--c-bg-page) 60%, transparent);
+  color: var(--c-text-title);
+  transform: translateX(2px);
+}
+
+/* 夜间模式菜单项基础样式 - 覆盖全局链接样式 */
+.theme-night .m-header-menu__item {
+  color: var(--c-text-body);
+}
+
+/* 日间模式菜单项基础样式 - 覆盖全局链接样式 */
+.m-header-menu__item {
+  color: var(--c-text-body);
+}
+
+.theme-night .m-header-menu__item:hover {
+  background: color-mix(in srgb, var(--c-gray-800) 60%, transparent);
+  color: var(--c-text-title);
+}
+
+.m-header-menu__item.danger {
+  color: var(--c-text-error);
+  border: 1px solid var(--c-border-medium);
+  background: color-mix(in srgb, var(--c-bg-error) 20%, transparent);
+}
+
+.m-header-menu__item.danger:hover {
+  background: color-mix(in srgb, var(--c-bg-error) 40%, transparent);
+  border-color: var(--c-text-error);
+}
+
+.theme-night .m-header-menu__item.danger {
+  border-color: var(--c-border-night-dark);
+  background: color-mix(in srgb, var(--c-bg-error) 30%, transparent);
+}
+
+.theme-night .m-header-menu__item.danger:hover {
+  background: color-mix(in srgb, var(--c-bg-error) 50%, transparent);
+  border-color: var(--c-text-error);
+}
+
+/* =======================================
+  * 汉堡菜单图标样式（无边框设计）
+  * ======================================= */
+.hamburger-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--hit-area);
+  height: var(--hit-area);
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all var(--ease-fast);
+  overflow: hidden;
+}
+
+/* 悬停时的微妙背景效果 */
+.hamburger-btn:hover {
+  background: color-mix(in srgb, var(--c-bg-page) 40%, transparent);
+}
+
+/* 点击时的反馈 */
+.hamburger-btn:active {
+  background: color-mix(in srgb, var(--c-bg-page) 60%, transparent);
+  transform: scale(0.95);
+}
+
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  gap: 3px;
+}
+
+.hamburger-line {
+  width: 18px;
+  height: 2px;
+  background-color: var(--c-text-body);
+  border-radius: 1px;
+  transition: all var(--ease-fast);
+  transform-origin: center;
+}
+
+/* 悬停效果 - 线条颜色变化 */
+.hamburger-btn:hover .hamburger-line {
+  background-color: var(--c-text-title);
+}
+
+/* 打开状态的动画效果 */
+.hamburger-btn[aria-expanded='true'] .hamburger-line:nth-child(1) {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.hamburger-btn[aria-expanded='true'] .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.hamburger-btn[aria-expanded='true'] .hamburger-line:nth-child(3) {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+/* 夜间主题适配 */
+.theme-night .hamburger-btn:hover {
+  background: color-mix(in srgb, var(--c-gray-800) 40%, transparent);
+}
+
+.theme-night .hamburger-btn:active {
+  background: color-mix(in srgb, var(--c-gray-800) 60%, transparent);
+}
+
+.theme-night .hamburger-line {
+  background-color: var(--c-text-body);
+}
+
+.theme-night .hamburger-btn:hover .hamburger-line {
+  background-color: var(--c-text-title);
+}
+
+/* 焦点：中性 outline */
+.hamburger-btn:focus-visible {
+  outline: var(--bw-2) solid var(--c-border-medium);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.theme-night .hamburger-btn:focus-visible {
+  outline-color: var(--c-border-medium);
+  box-shadow: none;
+}

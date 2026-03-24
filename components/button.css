@@ -1,0 +1,371 @@
+/* =======================================
+ * Celadon Components — Button (Neutral Pill Baseline)
+ * - 交互基准：中性灰 Hover/Active（参考摘要按钮）
+ * - 不使用品牌色；通过中性灰 + 阴影体现层级
+ * - 类别：Base / Primary(中性强调) / Secondary(中性描边) / Text
+ * - 形态：可选 .celadon-btn--pill 胶囊
+ * ======================================= */
+@layer components {
+  /* ===== 基类：布局与动效（视觉由变体控制） ===== */
+  .celadon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+
+    min-height: var(--hit-area);
+    padding-block: 0.5rem;
+    padding-inline: 1.25rem;
+
+    font-size: var(--fs-md);
+    font-weight: var(--fw-medium);
+    line-height: 1.4;
+
+    border: var(--bw-1) solid transparent; /* 由变体决定是否可见 */
+    border-radius: var(--radius-sm);
+    box-sizing: border-box;
+
+    color: var(--c-text-body);
+    background-color: transparent;
+    cursor: pointer;
+    white-space: nowrap;
+
+    transition:
+      background-color var(--ease-fast),
+      border-color var(--ease-fast),
+      color var(--ease-fast),
+      box-shadow var(--ease-fast),
+      transform var(--ease-fast);
+
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  /* 禁用态 */
+  .celadon-btn:disabled,
+  .celadon-btn[disabled],
+  .celadon-btn[aria-disabled='true'] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+    box-shadow: var(--shadow-0);
+  }
+
+  /* 焦点：中性 outline，无光晕 */
+  .celadon-btn:focus-visible {
+    outline: var(--bw-2) solid var(--c-border-medium);
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+  .theme-night .celadon-btn:focus-visible {
+    outline-color: var(--c-border-medium);
+    box-shadow: none;
+  }
+
+  /* =======================================
+   * 形态：胶囊
+   * ======================================= */
+  .celadon-btn--pill {
+    border-radius: var(--radius-full);
+    padding-block: 0.375rem; /* 比常规按钮略紧凑 */
+    padding-inline: 0.875rem;
+    min-height: var(--hit-area); /* 仍保证触控命中区 */
+    flex-shrink: 0;
+  }
+
+  /* 胶囊组（多按钮连续时） */
+  .celadon-btn-group--pill .celadon-btn {
+    border-radius: 0; /* 先重置 */
+  }
+  .celadon-btn-group--pill .celadon-btn:first-child {
+    border-start-start-radius: var(--radius-full);
+    border-end-start-radius: var(--radius-full);
+  }
+  .celadon-btn-group--pill .celadon-btn:last-child {
+    border-start-end-radius: var(--radius-full);
+    border-end-end-radius: var(--radius-full);
+  }
+
+  /* =======================================
+   * 主要按钮（中性强调）
+   * - 与次要按钮的差异：更深的描边/文字、强一级阴影
+   * ======================================= */
+  .celadon-btn--primary {
+    border-color: var(--c-text-title); /* 深中性灰描边 */
+    color: var(--c-text-title);
+    background-color: var(--c-bg-card); /* 与摘要按钮对齐的基底 */
+  }
+  .celadon-btn--primary:hover {
+    /* 日间：浅灰底，提升对比 */
+    background-color: var(--c-gray-50);
+    border-color: var(--c-gray-400);
+    color: var(--c-gray-900);
+    box-shadow: var(--shadow-4); /* 强化层级 */
+    transform: translateY(-1px);
+  }
+  .celadon-btn--primary:active {
+    background-color: var(--c-gray-100);
+    border-color: var(--c-gray-400);
+    color: var(--c-gray-900);
+    box-shadow: var(--shadow-5); /* 进一步增强按压感 */
+    transform: translateY(0);
+  }
+  .theme-night .celadon-btn--primary {
+    background-color: var(--c-bg-card);
+    border-color: var(--c-border-medium);
+    color: var(--c-text-body);
+  }
+  .theme-night .celadon-btn--primary:hover {
+    /* 夜间：深灰底 */
+    background-color: var(--c-gray-800);
+    border-color: var(--c-gray-500);
+    color: var(--c-gray-300);
+    box-shadow: var(--shadow-5); /* 夜间更强一点 */
+  }
+  .theme-night .celadon-btn--primary:active {
+    background-color: var(--c-gray-700);
+    border-color: var(--c-gray-500);
+    color: var(--c-gray-200);
+    box-shadow: var(--shadow-5);
+  }
+  /* 选中态/切换态（可选） */
+  .celadon-btn--primary.is-selected,
+  .celadon-btn--primary[aria-pressed='true'] {
+    border-width: var(--bw-2);
+    box-shadow: var(--shadow-5);
+  }
+
+  /* =======================================
+   * 次要按钮（中性描边）
+   * - 层级低于主要按钮：描边更浅、阴影弱一档
+   * ======================================= */
+  .celadon-btn--secondary,
+  .celadon-btn--outlined {
+    background-color: var(--c-bg-card);
+    border-color: var(--c-border-medium);
+    color: var(--c-text-body);
+  }
+  .celadon-btn--secondary:hover,
+  .celadon-btn--outlined:hover {
+    background-color: var(--c-gray-50);
+    border-color: var(--c-gray-400);
+    color: var(--c-gray-900);
+    box-shadow: var(--shadow-3); /* 比 primary 弱一档 */
+    transform: translateY(-1px);
+  }
+  .celadon-btn--secondary:active,
+  .celadon-btn--outlined:active {
+    background-color: var(--c-gray-100);
+    border-color: var(--c-gray-400);
+    color: var(--c-gray-900);
+    box-shadow: var(--shadow-4);
+    transform: translateY(0);
+  }
+  .theme-night .celadon-btn--secondary,
+  .theme-night .celadon-btn--outlined {
+    background-color: var(--c-bg-card);
+    border-color: var(--c-border-medium);
+    color: var(--c-text-body);
+  }
+  .theme-night .celadon-btn--secondary:hover,
+  .theme-night .celadon-btn--outlined:hover {
+    background-color: var(--c-gray-800);
+    border-color: var(--c-gray-500);
+    color: var(--c-gray-300);
+    box-shadow: var(--shadow-4);
+  }
+  .theme-night .celadon-btn--secondary:active,
+  .theme-night .celadon-btn--outlined:active {
+    background-color: var(--c-gray-700);
+    border-color: var(--c-gray-500);
+    color: var(--c-gray-200);
+    box-shadow: var(--shadow-5);
+  }
+  .celadon-btn--secondary.is-selected,
+  .celadon-btn--secondary[aria-pressed='true'],
+  .celadon-btn--outlined.is-selected,
+  .celadon-btn--outlined[aria-pressed='true'] {
+    border-width: var(--bw-2);
+    box-shadow: var(--shadow-4);
+  }
+
+  /* =======================================
+   * 文本按钮（无边框基态；交互时出现轻底与描边）
+   * - 基于中性灰 Hover/Active，与摘要按钮语义一致
+   * ======================================= */
+  .celadon-btn--text {
+    border: none; /* 基态无边框 */
+    color: var(--c-text-body);
+    padding-inline: 0.75rem;
+    background-color: transparent;
+  }
+  .celadon-btn--text:hover {
+    background-color: var(--c-gray-50);
+    border: var(--bw-1) solid var(--c-gray-300);
+    color: var(--c-gray-900);
+    box-shadow: var(--shadow-2);
+    transform: translateY(-1px);
+  }
+  .celadon-btn--text:active {
+    background-color: var(--c-gray-100);
+    border: var(--bw-1) solid var(--c-gray-300);
+    color: var(--c-gray-900);
+    box-shadow: var(--shadow-3);
+    transform: translateY(0);
+  }
+  .theme-night .celadon-btn--text:hover {
+    background-color: var(--c-gray-800);
+    border: var(--bw-1) solid var(--c-gray-500);
+    color: var(--c-gray-300);
+    box-shadow: var(--shadow-3);
+  }
+  .theme-night .celadon-btn--text:active {
+    background-color: var(--c-gray-700);
+    border: var(--bw-1) solid var(--c-gray-500);
+    color: var(--c-gray-200);
+    box-shadow: var(--shadow-4);
+  }
+  .celadon-btn--text.is-selected,
+  .celadon-btn--text[aria-pressed='true'] {
+    border: var(--bw-1) solid var(--c-gray-400);
+    box-shadow: var(--shadow-3);
+    color: var(--c-text-title);
+  }
+
+  /* =======================================
+   * 尺寸 & 图标
+   * ======================================= */
+  .celadon-btn--small {
+    padding-block: 0.375rem;
+    padding-inline: 0.75rem;
+    font-size: var(--fs-sm);
+  }
+  
+  /* 小尺寸 + 胶囊：确保 pill 的样式优先级（包括 border-radius 和 padding） */
+  .celadon-btn--pill.celadon-btn--small {
+    border-radius: var(--radius-full); /* 确保 border-radius 不被覆盖 */
+    padding-block: 0.375rem;
+    padding-inline: 0.875rem; /* 使用 pill 的 padding-inline */
+  }
+  .celadon-btn--large {
+    padding-block: 0.75rem;
+    padding-inline: 1.5rem;
+    font-size: var(--fs-md);
+    font-weight: var(--fw-semibold);
+  }
+  .celadon-btn--icon {
+    padding: 0;
+    inline-size: var(--hit-area);
+    block-size: var(--hit-area);
+    display: inline-grid;
+    place-items: center;
+    border-radius: var(--radius-full);
+  }
+
+  /* =======================================
+   * 按钮组
+   * ======================================= */
+  .celadon-btn-group {
+    display: inline-flex;
+  }
+  .celadon-btn-group .celadon-btn {
+    border-radius: 0;
+  }
+  .celadon-btn-group .celadon-btn + .celadon-btn {
+    margin-inline-start: -1px;
+  }
+  .celadon-btn-group .celadon-btn:first-child {
+    border-start-start-radius: var(--radius-sm);
+    border-end-start-radius: var(--radius-sm);
+  }
+  .celadon-btn-group .celadon-btn:last-child {
+    border-start-end-radius: var(--radius-sm);
+    border-end-end-radius: var(--radius-sm);
+  }
+  :dir(rtl) .celadon-btn-group .celadon-btn + .celadon-btn {
+    margin-right: -1px;
+    margin-left: 0;
+  }
+
+  /* =======================================
+   * 响应式 & 无障碍
+   * ======================================= */
+  @media (max-width: 640px) {
+    .celadon-btn {
+      padding-inline: 1rem;
+      font-size: var(--fs-sm);
+    }
+    .celadon-btn--small {
+      padding-inline: 0.625rem;
+      font-size: var(--fs-xs);
+    }
+    .celadon-btn--large {
+      padding-inline: 1.25rem;
+      font-size: var(--fs-md);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .celadon-btn {
+      transition: none;
+    }
+    .celadon-btn:hover {
+      transform: none;
+    }
+  }
+  @media (prefers-contrast: high) {
+    .celadon-btn {
+      border-width: var(--bw-2);
+    }
+    .celadon-btn--primary,
+    .celadon-btn--secondary,
+    .celadon-btn--outlined {
+      border-color: CanvasText;
+      color: CanvasText;
+      background: transparent;
+    }
+    .celadon-btn--text {
+      color: CanvasText;
+      text-decoration: underline;
+    }
+  }
+
+  /* ===== 移动端优化样式 ===== */
+  .celadon-mobile-optimized {
+    /* 增大触摸目标区域 */
+    min-height: 44px;
+    min-width: 44px;
+
+    /* 优化触摸响应 */
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+
+    /* 防止双击缩放 */
+    -ms-touch-action: manipulation;
+
+    /* 优化触摸反馈 */
+    -webkit-touch-callout: none;
+    -webkit-user-drag: none;
+  }
+
+  /* 移动端触摸反馈 */
+  @media (hover: none) and (pointer: coarse) {
+    .celadon-mobile-optimized:active {
+      transform: scale(0.96);
+      transition: transform 0.1s ease-out;
+    }
+
+    .celadon-mobile-optimized:not(:active) {
+      transform: scale(1);
+      transition: transform 0.15s ease-out;
+    }
+  }
+
+  /* 确保在移动设备上有足够的间距 */
+  @media (max-width: 768px) {
+    .celadon-mobile-optimized {
+      margin: 2px;
+    }
+  }
+}

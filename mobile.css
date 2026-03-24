@@ -1,0 +1,28 @@
+/* mobile.css - uni-app platform remap layer (rpx)
+ * This file is for uni-app consumers only.
+ * Web consumers should import web-mobile.css instead.
+ * Constraint: platform files only remap standard tokens and platform capabilities.
+ */
+
+:root {
+  --hit-area: 88rpx;
+  --hit-area-large: 88rpx;
+
+  --space-1: 8rpx;
+  --space-2: 12rpx;
+  --space-3: 16rpx;
+  --space-4: 24rpx;
+  --space-5: 32rpx;
+  --space-6: 40rpx;
+
+  --fs-xs: 20rpx;
+  --fs-sm: 24rpx;
+  --fs-md: 28rpx;
+  --fs-lg: 32rpx;
+  --fs-xl: 36rpx;
+
+  --radius-sm: 8rpx;
+  --radius-md: 12rpx;
+  --radius-lg: 16rpx;
+  --radius-xl: 24rpx;
+}

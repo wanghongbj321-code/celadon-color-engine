@@ -1,0 +1,123 @@
+/* =======================================
+ * Celadon Components — Dropdown Menu
+ * - 使用中性灰色系，遵循color engine设计规范
+ * - 支持日间/夜间主题切换
+ * ======================================= */
+@layer components {
+  .celadon-dropdown {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-top: var(--space-2);
+    min-width: 8rem;
+
+    background-color: var(--c-white);
+    border: var(--bw-1) solid var(--c-border-medium);
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-4);
+    z-index: 50;
+
+    /* 动画效果 */
+    opacity: 0;
+    transform: translateY(-4px);
+    transition:
+      opacity var(--ease-fast),
+      transform var(--ease-fast);
+  }
+
+  .celadon-dropdown.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* 下拉菜单项 */
+  .celadon-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+
+    font-size: var(--fs-sm);
+    line-height: 1.4;
+    text-align: left;
+
+    color: var(--c-text-body);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    transition:
+      background-color var(--ease-fast),
+      color var(--ease-fast);
+  }
+
+  .celadon-dropdown-item:hover {
+    background-color: var(--c-gray-50);
+    color: var(--c-text-title);
+  }
+
+  .celadon-dropdown-item:active {
+    background-color: var(--c-gray-100);
+    color: var(--c-text-title);
+  }
+
+  /* 选中状态 */
+  .celadon-dropdown-item.selected {
+    background-color: var(--c-gray-100);
+    color: var(--c-text-title);
+    font-weight: var(--fw-medium);
+  }
+
+  /* 夜间主题适配 */
+  .theme-night .celadon-dropdown {
+    background-color: var(--c-gray-800);
+    border-color: var(--c-gray-600);
+    box-shadow: var(--shadow-4);
+  }
+
+  .theme-night .celadon-dropdown-item:hover {
+    background-color: var(--c-gray-800);
+    color: var(--c-gray-300);
+  }
+
+  .theme-night .celadon-dropdown-item:active {
+    background-color: var(--c-gray-700);
+    color: var(--c-gray-200);
+  }
+
+  .theme-night .celadon-dropdown-item.selected {
+    background-color: var(--c-gray-700);
+    color: var(--c-gray-100);
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 640px) {
+    .celadon-dropdown {
+      min-width: 7rem;
+      right: -0.5rem;
+    }
+
+    .celadon-dropdown-item {
+      padding: var(--space-2) var(--space-3);
+      font-size: var(--fs-xs);
+    }
+
+    /* 移动端主题按钮更紧凑 */
+    .celadon-btn-pill {
+      padding-block: 0.25rem;
+      padding-inline: 0.75rem;
+      min-height: 2rem;
+      font-size: var(--fs-sm);
+    }
+  }
+
+  /* 无障碍支持 */
+  @media (prefers-reduced-motion: reduce) {
+    .celadon-dropdown {
+      transition: none;
+    }
+  }
+}
+

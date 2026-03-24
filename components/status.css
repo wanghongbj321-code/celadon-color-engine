@@ -1,0 +1,107 @@
+@layer components {
+  .celadon-status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-full);
+    border: var(--bw-1) solid var(--c-border-light);
+    box-shadow: var(--shadow-0);
+    transition:
+      background-color var(--ease-fast),
+      border-color var(--ease-fast),
+      box-shadow var(--ease-fast),
+      color var(--ease-fast);
+    line-height: 1.2;
+  }
+  .celadon-status__icon {
+    font-size: var(--fs-sm);
+  }
+  .celadon-status__text {
+    font-size: var(--fs-sm);
+  }
+
+  /* 大小 */
+  .celadon-status--sm {
+    padding: 0.25rem 0.5rem;
+  }
+  .celadon-status--md {
+    padding: 0.5rem 0.75rem;
+  }
+
+  /* 语义色 —— subtle：浅底 + 语义文字色（更易读） */
+  .celadon-status--subtle.celadon-status--success {
+    background: var(--c-bg-success);
+    color: var(--c-text-success);
+  }
+  .celadon-status--subtle.celadon-status--error {
+    background: var(--c-bg-error);
+    color: var(--c-text-error);
+  }
+  .celadon-status--subtle.celadon-status--warning {
+    background: var(--c-bg-warning);
+    color: var(--c-text-warning);
+  }
+  .celadon-status--subtle.celadon-status--info {
+    background: var(--c-bg-info);
+    color: var(--c-text-info);
+  }
+
+  /* 中性版本（符合 Celadon 中性灰理念） */
+  .celadon-status--neutral {
+    background: var(--c-bg-card);
+    color: var(--c-text-body);
+    border-color: var(--c-border-medium);
+  }
+  .celadon-status--neutral:hover {
+    background: var(--c-bg-page);
+    box-shadow: var(--shadow-2);
+  }
+
+  /* 语义色 —— outline：透明底 + 描边 + 语义文字色 */
+  .celadon-status--outline {
+    background: transparent;
+  }
+  .celadon-status--outline.celadon-status--success {
+    color: var(--c-text-success);
+    border-color: color-mix(in srgb, var(--c-text-success) 45%, transparent);
+  }
+  .celadon-status--outline.celadon-status--error {
+    color: var(--c-text-error);
+    border-color: color-mix(in srgb, var(--c-text-error) 45%, transparent);
+  }
+  .celadon-status--outline.celadon-status--warning {
+    color: var(--c-text-warning);
+    border-color: color-mix(in srgb, var(--c-text-warning) 45%, transparent);
+  }
+  .celadon-status--outline.celadon-status--info {
+    color: var(--c-text-info);
+    border-color: color-mix(in srgb, var(--c-text-info) 45%, transparent);
+  }
+
+  /* 轻交互：hover 仅加强描边/阴影（遵循“无背景靠边框与阴影”理念） */
+  .celadon-status:hover {
+    border-color: var(--c-border-medium);
+    box-shadow: var(--shadow-1);
+  }
+
+  /* 夜间边框更深一点，其余 remap 由 tokens 接管 */
+  .theme-night .celadon-status {
+    border-color: var(--c-border-medium);
+  }
+
+  /* 夜间 outline 风格边框增强（对比度提升） */
+  .theme-night .celadon-status--outline.celadon-status--success {
+    border-color: color-mix(in srgb, var(--c-text-success) 65%, transparent);
+  }
+  .theme-night .celadon-status--outline.celadon-status--error {
+    border-color: color-mix(in srgb, var(--c-text-error) 65%, transparent);
+  }
+  .theme-night .celadon-status--outline.celadon-status--warning {
+    border-color: color-mix(in srgb, var(--c-text-warning) 65%, transparent);
+  }
+  .theme-night .celadon-status--outline.celadon-status--info {
+    border-color: color-mix(in srgb, var(--c-text-info) 65%, transparent);
+  }
+}
+

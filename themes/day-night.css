@@ -1,0 +1,64 @@
+/* =======================================
+ * Celadon Color Engine — Theme Remaps (no @layer)
+ * - 只做语义变量在夜间的重映射
+ * ======================================= */
+
+/* Day：默认使用 :root 的日间值，一般无需额外 remap */
+.theme-day {
+  color-scheme: light;
+}
+
+/* Night：将通用语义变量 remap 到夜间候选值 */
+.theme-night {
+  color-scheme: dark;
+
+  /* 背景/边框/文字（指向 colors.css 的 night base tokens） */
+  --c-bg-page: var(--c-bg-base-night);
+  --c-bg-card: var(--c-card-bg-night);
+  --c-bg-input: var(--c-card-bg-night); /* 输入框背景跟随卡片背景 */
+  --c-bg-elev: var(--c-bg-g1-night); /* 浮层背景使用分层背景 */
+  --c-bg-selected: rgba(255, 255, 255, 0.12); /* 选中态背景：半透明白色 */
+  --c-bg-disabled: var(--c-gray-600); /* 禁用态背景 */
+  --c-border-light: var(--c-border-night-light);
+  --c-border-medium: var(--c-border-night-dark);
+  --c-text-secondary: var(--c-text-muted);
+  --c-text-body: var(--c-body-night);
+  --c-text-title: var(--c-heading-night);
+
+  /* 状态色：夜间映射到 night tokens */
+  --c-text-success: var(--c-text-success-night);
+  --c-text-error: var(--c-text-error-night);
+  --c-text-warning: var(--c-text-warning-night);
+  --c-text-info: var(--c-text-info-night);
+  --c-bg-success: var(--c-bg-success-night);
+  --c-bg-error: var(--c-bg-error-night);
+  --c-bg-warning: var(--c-bg-warning-night);
+  --c-bg-info: var(--c-bg-info-night);
+
+  /* 状态实体主色（Night 提亮，保证在深色背景上可见） */
+  --c-success:  #4ade80; /* green-400 */
+  --c-error:    #f87171; /* red-400 */
+  --c-warning:  #fbbf24; /* amber-400 */
+  --c-info:     var(--c-accent-night); /* teal-400 */
+
+  /* 通用实体主色（Night 调整） */
+  --c-brand:    var(--c-accent-night); /* teal-400 */
+  --c-disabled: var(--c-gray-500);     /* gray-500，在深色背景中维持静默感 */
+
+  /* 品牌色：夜间映射到 Night 组（teal-400/300/200） */
+  --brand-rail: var(--brand-rail-night); /* 期待值：#2DD4BF */
+  --brand-node: var(--brand-node-night); /* 期待值：#5EEAD4 */
+  --brand-ring: var(--brand-ring-night); /* 期待值：#99F6E4 */
+
+  /* 分隔线（夜间更微妙） */
+  --c-divider: rgba(255, 255, 255, 0.12);
+  --c-divider-subtle: rgba(255, 255, 255, 0.08);
+
+  /* 夜间阴影覆盖（提高可读性与层次感） */
+  --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.15);
+  --shadow-2: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-3: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-4: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-5: 0 16px 48px rgba(0, 0, 0, 0.4);
+}
+

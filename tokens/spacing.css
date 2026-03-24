@@ -1,0 +1,57 @@
+/* =======================================
+ * Celadon Color Engine — Spacing & Surface Tokens
+ * - 间距 / 命中区 / 圆角 / 阴影 / 边框 / 焦点环 / 过渡
+ * ======================================= */
+@layer tokens {
+  :root {
+    /* ===== 间距刻度 ===== */
+    --space-0: 0;
+    --space-1: 0.25rem; /* 4px */
+    --space-2: 0.5rem; /* 8px */
+    --space-3: 0.75rem; /* 12px */
+    --space-4: 1rem; /* 16px */
+    --space-5: 1.25rem; /* 20px */
+    --space-6: 1.5rem; /* 24px */
+    --space-7: 1.75rem; /* 28px */
+    --space-8: 2rem; /* 32px */
+    --space-10: 2.5rem; /* 40px */
+    --space-12: 3rem; /* 48px */
+    --space-16: 4rem; /* 64px */
+
+    /* ===== 命中区 ===== */
+    --hit-area: 36px;
+    --hit-area-large: 44px; /* 移动端推荐触控区域 (iOS/Android 规范) */
+
+    /* ===== 圆角 ===== */
+    --radius-xs: 0.25rem; /* 4px */
+    --radius-sm: 0.375rem; /* 6px */
+    --radius-md: 0.5rem; /* 8px */
+    --radius-lg: 0.875rem; /* 14px */
+    --radius-xl: 1rem; /* 16px */
+    --radius-2xl: 1.25rem; /* 20px */
+    --radius-full: 9999px; /* 圆形/胶囊 */
+
+    /* ===== 阴影（0-5） ===== */
+    --shadow-0: none;
+    --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-2: 0 2px 8px rgba(0, 0, 0, 0.12);
+    --shadow-3: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --shadow-4: 0 8px 24px rgba(0, 0, 0, 0.18);
+    --shadow-5: 0 16px 48px rgba(0, 0, 0, 0.22);
+
+    /* ===== 边框宽度 ===== */
+    --bw-1: 1px;
+    --bw-2: 2px;
+
+    /* ===== 焦点环（中性灰，非主题色） ===== */
+    /* Slate-500 / Slate-400，透明度 35-40%，保持可访问性 */
+    --c-focus-ring-day: rgba(100, 116, 139, 0.35); /* #64748B */
+    --c-focus-ring-night: rgba(148, 163, 184, 0.40); /* #94A3B8 */
+
+    /* ===== 过渡 ===== */
+    --ease-fast: 0.2s ease;
+    --ease-base: 0.3s ease;
+    --ease-slow: 0.5s ease;
+  }
+}
+

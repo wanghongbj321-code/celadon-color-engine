@@ -1,0 +1,109 @@
+/* === 移动端基准样式定义 === */
+
+/* 页面容器 */
+.m-container {
+  background: var(--c-bg-page);
+  color: var(--c-text-body);
+  transition: all 0.3s ease;
+}
+
+/* 头部基准样式 */
+.m-header {
+  background: var(--c-bg-card);
+  border-bottom: 1px solid var(--c-border-light);
+  transition: all 0.3s ease;
+}
+
+.m-header-title {
+  color: var(--c-text-title);
+  transition: color 0.3s ease;
+}
+
+.m-header-icon {
+  color: var(--c-accent-day);
+  transition: color 0.3s ease;
+}
+
+/* 主题徽章 */
+.m-theme-badge {
+  background: var(--c-bg-page);
+  border: 1px solid var(--c-border-medium);
+  color: var(--c-text-secondary);
+  transition: all 0.3s ease;
+}
+
+/* 颜色测试区域 */
+.m-color-item {
+  background: var(--c-bg-page);
+  border: 1px solid var(--c-border-light);
+  transition: all 0.3s ease;
+}
+
+.m-color-label {
+  color: var(--c-text-body);
+  transition: color 0.3s ease;
+}
+
+/* 表单元素 */
+.m-form-input,
+.m-form-textarea {
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-border-medium);
+  color: var(--c-text-body);
+  transition: all 0.3s ease;
+}
+
+.m-form-label {
+  color: var(--c-text-title);
+  transition: color 0.3s ease;
+}
+
+/* 状态指示器 */
+.m-status-item {
+  background: var(--c-bg-page);
+  transition: background-color 0.3s ease;
+}
+
+.m-status-text {
+  color: var(--c-text-body);
+  transition: color 0.3s ease;
+}
+
+/* 响应式测试 */
+.m-responsive-item {
+  background: var(--c-bg-page);
+  border: 1px solid var(--c-border-light);
+  color: var(--c-text-body);
+  transition: all 0.3s ease;
+}
+
+/* 动画测试 */
+.m-animation-item {
+  background: var(--c-bg-page);
+  border: 1px solid var(--c-border-light);
+  color: var(--c-text-body);
+  transition: all 0.3s ease;
+}
+
+/* 信息卡片 */
+.m-info-card {
+  background: var(--c-bg-card);
+  border: 1px solid var(--c-border-light);
+  transition: all 0.3s ease;
+}
+
+.m-info-list {
+  color: var(--c-text-body);
+  transition: color 0.3s ease;
+}
+
+.m-info-label {
+  color: var(--c-text-body);
+  transition: color 0.3s ease;
+}
+
+.m-info-value {
+  color: var(--c-text-title);
+  transition: color 0.3s ease;
+}
+

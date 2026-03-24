@@ -1,0 +1,57 @@
+/* index.css - Celadon Color Engine 通用入口 */
+/* 桌面端和移动端共享的样式 */
+
+@layer reset, tokens, base, components, utilities;
+
+/* =========================
+   Tokens & Themes（仅变量）
+   ========================= */
+@import './tokens/colors.css';
+@import './tokens/typography.css';
+@import './tokens/spacing.css';
+@import './tokens/z-index.css';
+
+/* 2. 主题配置（日间/夜间模式） */
+@import './themes/day-night.css';
+
+/* =========================
+   Base（若内部有 @layer base，会落在 base 层）
+   ========================= */
+@import './layers/reset.css';
+@import './base/base.css';
+
+/* =========================
+   Components（内部应使用 @layer components）
+   ========================= */
+@import './components/button.css';
+@import './components/card.css';
+@import './components/form.css';
+@import './components/modal.css';
+@import './components/status.css';
+@import './components/titles.css';
+@import './components/header.css';
+@import './components/dropdown.css';
+@import './components/timeline.css';
+@import './components/theme-selector.css';
+@import './components/accent-targets.css';
+@import './components/table.css';
+
+/* =========================
+   Utilities（内部应使用 @layer utilities）
+   ========================= */
+@import './utilities/index.css';
+
+/* =========================
+   Overrides / Hotfix（兜底覆盖，建议也放在 components 或 utilities 层里）
+   ========================= */
+@import './overrides/hotfix.css';
+
+/* =========================
+   平台特定样式
+   ========================= */
+/* 注意：平台文件是“适配层”，只允许 remap 标准 token 与平台能力，不允许重写组件视觉规则。
+ * 桌面端和移动端需要额外引入对应的平台特定文件：
+ * 桌面端在 main.ts 中引入：import './celadon-color-engine/desktop.css'
+ * Web 移动端在 main.ts 中引入：import './celadon-color-engine/web-mobile.css'
+ * uni-app 移动端在 main.ts 中引入：import './celadon-color-engine/mobile.css'
+ */

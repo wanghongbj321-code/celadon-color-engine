@@ -1,0 +1,60 @@
+/* =======================================
+ * Celadon Color Engine — Typography Tokens
+ * - 字体家族 / 字号刻度 / 行高 / 字距
+ * ======================================= */
+:root {
+  /* ===== 字体家族 ===== */
+  --font-serif:
+    'Times New Roman', 'Times', 'SimSun', '宋体', 'STSong', '华文宋体',
+    'Noto Serif CJK SC', 'Source Han Serif SC', 'Source Serif Pro', serif;
+  --font-sans:
+    'PingFang SC', 'DengXian', system-ui, 'Microsoft YaHei', 'Helvetica Neue',
+    Arial, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+
+  /* ===== 基准字号 ===== */
+  --font-scale: 1; /* 全局缩放因子 */
+  --font-size-root: 16px; /* HTML 根字号（用于 rem 计算） */
+  --fs-base: 1rem; /* 16px，正文默认字号 */
+
+  /* ===== 语义字号（基于 16px root） ===== */
+  --fs-xs: 0.75rem; /* 12px */
+  --fs-sm: 0.875rem; /* 14px */
+  --fs-md: 1rem; /* 16px */
+  --fs-lg: 1.125rem; /* 18px */
+  --fs-xl: 1.25rem; /* 20px */
+  --fs-2xl: 1.5rem; /* 24px */
+  --fs-3xl: 1.75rem; /* 28px */
+  --fs-4xl: 2rem; /* 32px */
+  --fs-5xl: 2.5rem; /* 40px */
+
+  /* ===== 行高（相对值） ===== */
+  --lh-tight: 1.2;
+  --lh-snug: 1.33;
+  --lh-normal: 1.5;
+  --lh-relaxed: 1.6;
+
+  /* ===== 字重 ===== */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* ===== 字距 ===== */
+  --ls-tight: -0.01em;
+  --ls-normal: 0;
+  --ls-wide: 0.01em;
+
+  /* ===== 标题系统（与 titles.css 对齐） ===== */
+  --title-lg-size: var(--fs-2xl);
+  --title-lg-lh: var(--lh-snug);
+
+  --title-md-size: var(--fs-xl);
+  --title-md-lh: var(--lh-normal);
+
+  --title-sm-size: var(--fs-lg);
+  --title-sm-lh: var(--lh-normal);
+}
+

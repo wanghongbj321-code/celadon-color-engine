@@ -1,0 +1,441 @@
+/* =======================================
+ * Celadon Components — Modal (Mobile-First)
+ * - 移动优先的弹窗组件系统
+ * - 支持多种弹窗类型和变体
+ * - 完美集成青石色系主题
+ * - 触摸友好的交互设计
+ * ======================================= */
+@layer components {
+  /* ===== 基础弹窗容器 ===== */
+  .celadon-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+    pointer-events: none;
+  }
+
+  /* ===== 遮罩层 ===== */
+  .celadon-modal--overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--c-bg-overlay);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity var(--ease-base);
+    pointer-events: auto;
+  }
+
+  .theme-night .celadon-modal--overlay {
+    background-color: var(--c-bg-overlay);
+  }
+
+  /* ===== 弹窗内容区 ===== */
+  .celadon-modal--content {
+    position: relative;
+    background: var(--c-bg-card);
+    border: var(--bw-1) solid var(--c-border-light);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-4);
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow: hidden;
+    transform: scale(0.95) translateY(10px);
+    opacity: 0;
+    transition:
+      transform var(--ease-base),
+      opacity var(--ease-base);
+    pointer-events: auto;
+
+    /* 触摸友好的最小尺寸 */
+    min-width: 280px;
+    min-height: 120px;
+  }
+
+  /* 夜间模式样式 - 学习 celadon-card 的设计 */
+  .theme-night .celadon-modal--content {
+    background: var(--c-bg-card);
+    border-color: var(--c-border-light);
+    box-shadow: var(--shadow-1);
+  }
+
+  .theme-night .celadon-modal--content:hover {
+    box-shadow: var(--shadow-3);
+  }
+
+  /* ===== 弹窗状态 ===== */
+  .celadon-modal.is-open .celadon-modal--overlay {
+    opacity: 1;
+  }
+
+  .celadon-modal.is-open .celadon-modal--content {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+
+  /* ===== 弹窗变体 ===== */
+
+  /* 警告弹窗 */
+  .celadon-modal--alert .celadon-modal--content {
+    border-left: var(--bw-2) solid var(--c-warning);
+  }
+
+  /* 错误弹窗 */
+  .celadon-modal--error .celadon-modal--content {
+    border-left: var(--bw-2) solid var(--c-error);
+  }
+
+  /* 成功弹窗 */
+  .celadon-modal--success .celadon-modal--content {
+    border-left: var(--bw-2) solid var(--c-success);
+  }
+
+  /* 信息弹窗 */
+  .celadon-modal--info .celadon-modal--content {
+    border-left: var(--bw-2) solid var(--c-info);
+  }
+
+  /* 确认弹窗 */
+  .celadon-modal--confirm .celadon-modal--content {
+    border-left: var(--bw-2) solid var(--c-accent-day);
+  }
+
+  /* ===== 弹窗尺寸变体 ===== */
+
+  /* 小弹窗 */
+  .celadon-modal--small .celadon-modal--content {
+    max-width: 320px;
+    min-width: 280px;
+  }
+
+  /* 中等弹窗（默认） */
+  .celadon-modal--medium .celadon-modal--content {
+    max-width: 480px;
+    min-width: 320px;
+  }
+
+  /* 大弹窗 */
+  .celadon-modal--large .celadon-modal--content {
+    max-width: 640px;
+    min-width: 480px;
+  }
+
+  /* 全屏弹窗 */
+  .celadon-modal--fullscreen .celadon-modal--content {
+    max-width: 100vw;
+    max-height: 100vh;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  /* ===== 弹窗头部 ===== */
+  .celadon-modal__header {
+    padding: var(--space-4) var(--space-4) var(--space-3);
+    border-bottom: var(--bw-1) solid var(--c-border-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .celadon-modal__title {
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-semibold);
+    color: var(--c-text-title);
+    line-height: 1.4;
+    margin: 0;
+    flex: 1;
+  }
+
+  .celadon-modal__close {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--c-text-secondary);
+    transition:
+      background-color var(--ease-fast),
+      color var(--ease-fast);
+    flex-shrink: 0;
+  }
+
+  .celadon-modal__close:hover {
+    background-color: var(--c-bg-page);
+    color: var(--c-text-title);
+  }
+
+  .celadon-modal__close:focus-visible {
+    outline: var(--bw-2) solid var(--c-border-medium);
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+
+  .theme-night .celadon-modal__close:focus-visible {
+    outline-color: var(--c-border-medium);
+    box-shadow: none;
+  }
+
+  /* ===== 弹窗内容 ===== */
+  .celadon-modal__body {
+    padding: var(--space-4);
+    color: var(--c-text-body);
+    line-height: var(--lh-normal);
+    overflow-y: auto;
+    max-height: 60vh;
+  }
+
+  .celadon-modal__body:only-child {
+    padding-top: var(--space-4);
+  }
+
+  /* ===== 弹窗底部 ===== */
+  .celadon-modal__footer {
+    padding: var(--space-3) var(--space-4) var(--space-4);
+    border-top: var(--bw-1) solid var(--c-border-light);
+    display: flex;
+    gap: var(--space-3);
+    justify-content: center; /* 默认居中，更美观 */
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .celadon-modal__footer:empty {
+    display: none;
+  }
+
+  /* 底部按钮样式 */
+  .celadon-modal__footer .celadon-btn {
+    min-width: 70px; /* 减小按钮尺寸，更精致 */
+    padding-block: 0.5rem;
+    padding-inline: 1.25rem;
+  }
+
+  /* 左对齐的底部 */
+  .celadon-modal__footer--left {
+    justify-content: flex-start;
+  }
+
+  /* 居中的底部（默认，更美观） */
+  .celadon-modal__footer--center {
+    justify-content: center;
+  }
+
+  /* 右对齐的底部 */
+  .celadon-modal__footer--right {
+    justify-content: flex-end;
+  }
+
+  /* ===== 移动端优化 ===== */
+  @media (max-width: 640px) {
+    .celadon-modal {
+      padding: var(--space-3);
+    }
+
+    .celadon-modal--content {
+      max-width: calc(100vw - var(--space-6));
+      max-height: calc(100vh - var(--space-6));
+      border-radius: var(--radius-lg);
+      min-width: 260px;
+    }
+
+    .celadon-modal__header {
+      padding: var(--space-3) var(--space-3) var(--space-2);
+    }
+
+    .celadon-modal__body {
+      padding: var(--space-3);
+      max-height: 50vh;
+    }
+
+    .celadon-modal__footer {
+      padding: var(--space-2) var(--space-3) var(--space-3);
+      gap: var(--space-2);
+    }
+
+    .celadon-modal__footer .celadon-btn {
+      min-width: 65px; /* 移动端按钮更小，更精致 */
+      padding-block: 0.5rem;
+      padding-inline: 1rem;
+    }
+
+    /* 移动端全屏弹窗 */
+    .celadon-modal--fullscreen .celadon-modal--content {
+      border-radius: 0;
+      margin: 0;
+      max-width: 100vw;
+      max-height: 100vh;
+    }
+  }
+
+  /* ===== 触摸设备优化 ===== */
+  @media (hover: none) and (pointer: coarse) {
+    .celadon-modal__close {
+      min-width: 44px;
+      min-height: 44px;
+    }
+
+    .celadon-modal__footer .celadon-btn {
+      min-height: 44px;
+    }
+  }
+
+  /* ===== 动画效果 ===== */
+  @keyframes celadon-modal-fade-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  @keyframes celadon-modal-fade-out {
+    from {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.95) translateY(10px);
+    }
+  }
+
+  .celadon-modal--animate-in .celadon-modal--content {
+    animation: celadon-modal-fade-in 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .celadon-modal--animate-out .celadon-modal--content {
+    animation: celadon-modal-fade-out 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ===== 无障碍支持 ===== */
+
+  /* 高对比度模式 */
+  @media (prefers-contrast: high) {
+    .celadon-modal--content {
+      border-width: var(--bw-2);
+      box-shadow: var(--shadow-5);
+    }
+
+    .celadon-modal__header,
+    .celadon-modal__footer {
+      border-width: var(--bw-2);
+    }
+  }
+
+  /* 减少动画模式 */
+  @media (prefers-reduced-motion: reduce) {
+    .celadon-modal--content,
+    .celadon-modal--overlay {
+      transition: none;
+    }
+
+    .celadon-modal--animate-in .celadon-modal--content,
+    .celadon-modal--animate-out .celadon-modal--content {
+      animation: none;
+    }
+  }
+
+  /* ===== 焦点管理 ===== */
+  .celadon-modal:focus {
+    outline: none;
+  }
+
+  .celadon-modal--content:focus-visible {
+    outline: var(--bw-2) solid var(--c-border-medium);
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+
+  .theme-night .celadon-modal--content:focus-visible {
+    outline-color: var(--c-border-medium);
+    box-shadow: none;
+  }
+
+  /* ===== 特殊弹窗类型 ===== */
+
+  /* 表单弹窗 */
+  .celadon-modal--form .celadon-modal__body {
+    padding: 0;
+  }
+
+  .celadon-modal--form .celadon-modal__body > * {
+    padding: var(--space-4);
+  }
+
+  .celadon-modal--form .celadon-modal__body > * + * {
+    border-top: var(--bw-1) solid var(--c-border-light);
+  }
+
+  /* 图片弹窗 */
+  .celadon-modal--image .celadon-modal__body {
+    padding: 0;
+    text-align: center;
+  }
+
+  .celadon-modal--image .celadon-modal__body img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+  }
+
+  /* 列表弹窗 */
+  .celadon-modal--list .celadon-modal__body {
+    padding: 0;
+  }
+
+  .celadon-modal--list .celadon-modal__body > * {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: var(--bw-1) solid var(--c-border-light);
+  }
+
+  .celadon-modal--list .celadon-modal__body > *:last-child {
+    border-bottom: none;
+  }
+
+  /* ===== 工具类 ===== */
+
+  /* 隐藏滚动条但保持功能 */
+  .celadon-modal__body--scroll-hidden {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .celadon-modal__body--scroll-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 弹窗居中 */
+  .celadon-modal--center {
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* 弹窗顶部对齐 */
+  .celadon-modal--top {
+    align-items: flex-start;
+    padding-top: var(--space-4);
+  }
+
+  /* 弹窗底部对齐 */
+  .celadon-modal--bottom {
+    align-items: flex-end;
+    padding-bottom: var(--space-4);
+  }
+}

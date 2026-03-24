@@ -1,0 +1,76 @@
+/* =======================================
+ * Celadon Color Engine — Reset Layer
+ * - 基础CSS重置，避免PostCSS警告
+ * ======================================= */
+@layer reset {
+  /* 基础重置 */
+  * {
+    box-sizing: border-box;
+  }
+
+  /* 移除默认边距和填充 */
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul,
+  ol,
+  li,
+  dl,
+  dt,
+  dd,
+  blockquote,
+  figure,
+  fieldset,
+  legend,
+  textarea,
+  pre,
+  iframe,
+  hr,
+  button,
+  input,
+  select,
+  textarea {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* 移除列表样式 */
+  ul,
+  ol {
+    list-style: none;
+  }
+
+  /* 移除链接下划线 */
+  a {
+    text-decoration: none;
+  }
+
+  /* 移除按钮默认样式 */
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* 移除输入框默认样式 */
+  input,
+  textarea,
+  select {
+    border: none;
+    outline: none;
+    background: none;
+  }
+
+  /* 图片默认样式 */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+

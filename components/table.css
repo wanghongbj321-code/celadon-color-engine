@@ -1,0 +1,188 @@
+/**
+ * Celadon Table Styles
+ * - Table component styling using Celadon design tokens
+ * - Supports light/dark themes
+ * - Responsive table containers
+ */
+
+/* =============================================================================
+  Table Container
+  ============================================================================= */
+
+.celadon-table-container {
+  width: 100%;
+  overflow-x: auto;
+  background: var(--c-bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--c-border-light);
+  box-shadow: var(--shadow-1);
+}
+
+/* Hide scrollbar for cleaner look while maintaining functionality */
+.celadon-table-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.celadon-table-container::-webkit-scrollbar-track {
+  background: var(--c-bg-page);
+  border-radius: var(--radius-sm);
+}
+
+.celadon-table-container::-webkit-scrollbar-thumb {
+  background: var(--c-border-medium);
+  border-radius: var(--radius-sm);
+}
+
+.celadon-table-container::-webkit-scrollbar-thumb:hover {
+  background: var(--c-border-medium);
+}
+
+/* =============================================================================
+  Table Base Styles
+  ============================================================================= */
+
+.celadon-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--c-bg-card);
+  color: var(--c-text-body);
+  font-size: var(--fs-sm);
+}
+
+/* =============================================================================
+  Table Header
+  ============================================================================= */
+
+.celadon-table thead {
+  background: var(--c-bg-page);
+  border-bottom: 2px solid var(--c-border-medium);
+}
+
+.celadon-table th {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  font-weight: var(--fw-semibold);
+  color: var(--c-text-title);
+  font-size: var(--fs-sm);
+  white-space: nowrap;
+  border-bottom: 2px solid var(--c-border-medium);
+}
+
+.celadon-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--ease-fast);
+}
+
+.celadon-table th.sortable:hover {
+  background: color-mix(in srgb, var(--c-bg-page) 90%, var(--brand-rail) 10%);
+}
+
+/* =============================================================================
+  Table Body
+  ============================================================================= */
+
+.celadon-table tbody tr {
+  border-bottom: 1px solid var(--c-border-light);
+  transition: background-color var(--ease-fast);
+}
+
+.celadon-table tbody tr:hover {
+  background: color-mix(in srgb, var(--c-bg-card) 95%, var(--brand-rail) 5%);
+  cursor: pointer;
+}
+
+.celadon-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.celadon-table td {
+  padding: var(--space-3) var(--space-4);
+  color: var(--c-text-body);
+  vertical-align: middle;
+}
+
+/* =============================================================================
+  Table Cell Variations
+  ============================================================================= */
+
+/* Fixed width columns */
+.celadon-table .table-col-fixed {
+  width: auto;
+  min-width: fit-content;
+}
+
+/* Action column */
+.celadon-table .table-col-actions {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Truncate long text */
+.celadon-table .table-cell-truncate {
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* =============================================================================
+  Table Action Buttons
+  ============================================================================= */
+
+.celadon-table-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--brand-rail);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color var(--ease-fast), color var(--ease-fast);
+}
+
+.celadon-table-action-btn:hover {
+  color: var(--c-link-hover);
+  background: color-mix(in srgb, var(--brand-rail) 10%, transparent);
+}
+
+.celadon-table-action-btn:active {
+  color: var(--c-link-hover);
+}
+
+.celadon-table-action-btn svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* =============================================================================
+  Empty State
+  ============================================================================= */
+
+.celadon-table-empty {
+  padding: var(--space-8) var(--space-4);
+  text-align: center;
+  color: var(--c-text-muted);
+}
+
+/* =============================================================================
+  Responsive
+  ============================================================================= */
+
+@media (max-width: 768px) {
+  .celadon-table th,
+  .celadon-table td {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--fs-xs);
+  }
+  
+  .celadon-table-container {
+    border-radius: var(--radius-md);
+  }
+}
+

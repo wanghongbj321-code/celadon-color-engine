@@ -1,0 +1,151 @@
+/* =======================================
+ * Celadon Components — Accent Targets
+ * 用于基于强调色的通用角色：按钮/文本/Chip/Icon/Input 焦点等
+ * ======================================= */
+@layer components {
+  .generative-color-target {
+    transition:
+      background-color var(--ease-base),
+      color var(--ease-base),
+      box-shadow var(--ease-base),
+      border-color var(--ease-base),
+      transform var(--ease-fast);
+  }
+
+  /* —— Primary Button Role —— */
+  .generative-color-target[data-accent-role='primary-btn'] {
+    background-color: var(--c-accent-day);
+    color: var(--c-accent-text-day);
+    border: 1px solid var(--c-accent-day);
+  }
+  .generative-color-target[data-accent-role='primary-btn']:hover {
+    background-color: var(--c-accent-hover-day);
+    border-color: var(--c-accent-hover-day);
+    transform: translateY(-1px);
+  }
+  .theme-night .generative-color-target[data-accent-role='primary-btn'] {
+    background-color: var(--c-accent-night);
+    color: var(--c-accent-text-night);
+    border-color: var(--c-accent-night);
+  }
+  .theme-night .generative-color-target[data-accent-role='primary-btn']:hover {
+    background-color: var(--c-accent-hover-night);
+  }
+
+  /* glow（可选光晕） */
+  .generative-color-target[data-accent-role='primary-btn'][data-glow='1'] {
+    box-shadow: 0 6px 20px -6px var(--c-accent-day);
+  }
+  .theme-night
+    .generative-color-target[data-accent-role='primary-btn'][data-glow='1'] {
+    box-shadow: 0 0 24px -6px var(--c-accent-night);
+  }
+
+  /* —— Secondary Button —— */
+  .generative-color-target[data-accent-role='secondary-btn'] {
+    border: 1px solid var(--c-accent-day);
+    color: var(--c-accent-day);
+    background-color: transparent;
+  }
+  .generative-color-target[data-accent-role='secondary-btn']:hover {
+    background-color: color-mix(in srgb, var(--c-accent-day) 6%, transparent);
+  }
+  .theme-night .generative-color-target[data-accent-role='secondary-btn'] {
+    border-color: var(--c-accent-night);
+    color: var(--c-accent-night);
+  }
+  .theme-night
+    .generative-color-target[data-accent-role='secondary-btn']:hover {
+    background-color: color-mix(in srgb, var(--c-accent-night) 6%, transparent);
+  }
+
+  /* —— Tertiary Button —— */
+  .generative-color-target[data-accent-role='tertiary-btn'] {
+    color: var(--c-accent-day);
+    background-color: transparent;
+  }
+  .generative-color-target[data-accent-role='tertiary-btn']:hover {
+    background-color: color-mix(in srgb, var(--c-accent-day) 5%, transparent);
+  }
+  .theme-night .generative-color-target[data-accent-role='tertiary-btn'] {
+    color: var(--c-accent-night);
+  }
+  .theme-night .generative-color-target[data-accent-role='tertiary-btn']:hover {
+    background-color: color-mix(in srgb, var(--c-accent-night) 5%, transparent);
+  }
+
+  /* —— Text —— */
+  .generative-color-target[data-accent-role='text'] {
+    color: var(--c-accent-day);
+  }
+  .theme-night .generative-color-target[data-accent-role='text'] {
+    color: var(--c-accent-night);
+  }
+
+  /* —— Chip —— */
+  .generative-color-target[data-accent-role='chip'] {
+    background-color: color-mix(in srgb, var(--c-accent-day) 10%, transparent);
+    color: var(--c-accent-day);
+    border-radius: var(--radius-sm);
+    padding: 0 0.5em;
+    line-height: 1.8;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35em;
+  }
+  .theme-night .generative-color-target[data-accent-role='chip'] {
+    background-color: color-mix(
+      in srgb,
+      var(--c-accent-night) 10%,
+      transparent
+    );
+    color: var(--c-accent-night);
+  }
+
+  /* —— Icon —— */
+  .generative-color-target[data-accent-role='icon-bg'] {
+    background-color: color-mix(in srgb, var(--c-accent-day) 10%, transparent);
+    border-radius: 999px;
+    padding: 0.375rem;
+    display: inline-flex;
+  }
+  .theme-night .generative-color-target[data-accent-role='icon-bg'] {
+    background-color: color-mix(
+      in srgb,
+      var(--c-accent-night) 10%,
+      transparent
+    );
+  }
+
+  .generative-color-target[data-accent-role='icon-fg'] {
+    color: var(--c-accent-day);
+    stroke: currentColor;
+    fill: currentColor; /* 兼容 fill 型图标 */
+  }
+  .theme-night .generative-color-target[data-accent-role='icon-fg'] {
+    color: var(--c-accent-night);
+  }
+
+  /* —— Input Focus —— */
+  .generative-color-target[data-accent-role='input-focus']:focus,
+  .generative-color-target[data-accent-role='input-focus']:focus-visible {
+    border-color: var(--c-accent-day);
+    box-shadow: 0 0 0 2px
+      color-mix(in srgb, var(--c-accent-day) 40%, transparent);
+    outline: none;
+  }
+  .theme-night .generative-color-target[data-accent-role='input-focus']:focus,
+  .theme-night
+    .generative-color-target[data-accent-role='input-focus']:focus-visible {
+    border-color: var(--c-accent-night);
+    box-shadow: 0 0 0 2px
+      color-mix(in srgb, var(--c-accent-night) 40%, transparent);
+  }
+
+  /* A11y motion */
+  @media (prefers-reduced-motion: reduce) {
+    .generative-color-target {
+      transition: none;
+    }
+  }
+}

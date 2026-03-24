@@ -1,0 +1,188 @@
+/* =======================================
+ * Celadon Color Engine — Base
+ * - 全局基线：html/body、文本颜色、可访问性、常用基类
+ * - 仅使用语义别名，不直接使用物理灰阶
+ * ======================================= */
+/* Inject Tailwind preflight in this module to satisfy Tailwind plugin */
+@tailwind base;
+@layer base {
+  html {
+    font-size: var(--font-size-root);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--c-text-body);
+    background-color: var(--c-bg-page);
+    line-height: var(--lh-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition:
+      background-color var(--ease-slow),
+      color var(--ease-slow);
+    min-height: 100vh;
+  }
+
+  /* ===== 基础文本元素 ===== */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--c-text-title);
+    margin: 0;
+  }
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: var(--c-accent-day);
+    text-decoration: none;
+    transition: color var(--ease-base);
+  }
+  .theme-night a {
+    color: var(--c-accent-night);
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* ===== 可聚焦元素的可见焦点（中性边框，无光晕） ===== */
+  :where(
+    a,
+    button,
+    input,
+    select,
+    textarea,
+    [tabindex]:not([tabindex='-1'])
+  ):focus-visible {
+    outline: var(--bw-2) solid var(--c-border-medium);
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+  .theme-night
+    :where(
+      a,
+      button,
+      input,
+      select,
+      textarea,
+      [tabindex]:not([tabindex='-1'])
+    ):focus-visible {
+    outline-color: var(--c-border-medium);
+    box-shadow: none;
+  }
+
+  /* ===== 标题基类（与组件层 titles.css 配合） ===== */
+  .heading-text {
+    transition: color var(--ease-slow);
+  }
+  .theme-day .heading-text {
+    color: var(--c-text-title);
+  }
+  .theme-night .heading-text {
+    color: var(--c-heading-night);
+  }
+
+  /* ===== 通用卡片基类（styled-card） ===== */
+  .styled-card {
+    background-color: var(--c-bg-card);
+    border: var(--bw-1) solid var(--c-border-light);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-1);
+    transition:
+      background-color var(--ease-slow),
+      border-color var(--ease-base),
+      box-shadow var(--ease-base);
+  }
+  .theme-night .styled-card {
+    background-color: var(--c-bg-card);
+    border: var(--bw-1) solid var(--c-border-light);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow:
+      var(--shadow-2),
+      inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  }
+  @supports not (
+    (-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))
+  ) {
+    .theme-night .styled-card {
+      background-color: var(--c-bg-card);
+    }
+  }
+
+  /* ===== 分割线/边框/输入基类（themed-*） ===== */
+  .themed-divider {
+    background-color: var(--c-border-light);
+    height: var(--bw-1);
+    transition: background-color var(--ease-base);
+  }
+  .theme-night .themed-divider {
+    background-color: var(--c-border-medium);
+  }
+
+  .themed-border {
+    border: var(--bw-1) solid var(--c-border-light);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--ease-base);
+  }
+  .theme-night .themed-border {
+    border-color: var(--c-border-light);
+  }
+
+  .themed-input {
+    background-color: var(--c-bg-card);
+    color: var(--c-text-body);
+    border: var(--bw-1) solid var(--c-border-medium);
+    border-radius: var(--radius-sm);
+    min-height: var(--hit-area);
+    padding: var(--space-2) var(--space-3);
+    transition:
+      background-color var(--ease-base),
+      border-color var(--ease-base),
+      color var(--ease-base),
+      box-shadow var(--ease-base);
+  }
+  .themed-input::placeholder {
+    color: var(--c-text-muted);
+  }
+  .theme-night .themed-input {
+    background-color: var(--c-bg-card);
+    color: var(--c-text-body);
+    border-color: var(--c-border-medium);
+  }
+
+  /* ===== 辅助：隐藏滚动条但可滚动（慎用） ===== */
+  .u-celadon-hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .u-celadon-hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* ===== 无障碍支持 ===== */
+  @media (prefers-reduced-motion: reduce) {
+    body,
+    .heading-text,
+    .styled-card,
+    .themed-divider,
+    .themed-border,
+    .themed-input {
+      transition: none !important;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .themed-border,
+    .themed-input,
+    .styled-card {
+      border: var(--bw-1) solid ButtonText;
+      forced-color-adjust: auto;
+    }
+  }
+}
+

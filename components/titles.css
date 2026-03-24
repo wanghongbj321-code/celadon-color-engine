@@ -1,0 +1,203 @@
+/* =======================================
+ * Celadon Components — Titles (UI + Article)
+ * Public class API remains stable.
+ * ======================================= */
+@layer components {
+  .sw-title,
+  .sw-title-large,
+  .sw-title-small,
+  .sw-subtitle,
+  .sw-subtitle-large,
+  .sw-subtitle-small,
+  .article-title,
+  .article-title-large,
+  .article-title-small,
+  .article-subtitle,
+  .article-subtitle-small {
+    margin: 0;
+    font-family: var(--font-sans);
+    transition: color var(--ease-base);
+  }
+
+  .sw-title,
+  .sw-title-large,
+  .sw-title-small,
+  .article-title,
+  .article-title-large,
+  .article-title-small {
+    color: var(--c-text-title);
+    letter-spacing: var(--ls-tight);
+  }
+
+  .sw-subtitle,
+  .sw-subtitle-large,
+  .article-subtitle {
+    color: var(--c-text-body);
+    letter-spacing: var(--ls-wide);
+  }
+
+  .sw-subtitle-small,
+  .article-subtitle-small {
+    color: var(--c-text-secondary);
+    letter-spacing: var(--ls-normal);
+  }
+
+  .sw-title {
+    font-size: var(--fs-xl);
+    line-height: var(--lh-snug);
+    font-weight: var(--fw-semibold);
+  }
+
+  .sw-title-large {
+    font-size: var(--fs-2xl);
+    line-height: var(--lh-snug);
+    font-weight: var(--fw-semibold);
+  }
+
+  .sw-title-small {
+    font-size: var(--fs-lg);
+    line-height: var(--lh-normal);
+    font-weight: var(--fw-semibold);
+  }
+
+  .sw-subtitle {
+    font-size: var(--fs-md);
+    line-height: var(--lh-normal);
+    font-weight: var(--fw-regular);
+  }
+
+  .sw-subtitle-large {
+    font-size: var(--fs-lg);
+    line-height: var(--lh-relaxed);
+    font-weight: var(--fw-medium);
+  }
+
+  .sw-subtitle-small {
+    font-size: var(--fs-sm);
+    line-height: var(--lh-normal);
+    font-weight: var(--fw-medium);
+  }
+
+  .article-title {
+    font-size: var(--fs-4xl);
+    line-height: var(--lh-snug);
+    font-weight: var(--fw-semibold);
+  }
+
+  .article-title-large {
+    font-size: var(--fs-5xl);
+    line-height: var(--lh-tight);
+    font-weight: var(--fw-bold);
+  }
+
+  .article-title-small {
+    font-size: var(--fs-2xl);
+    line-height: var(--lh-normal);
+    font-weight: var(--fw-semibold);
+  }
+
+  .article-subtitle {
+    font-size: var(--fs-lg);
+    line-height: var(--lh-normal);
+    font-weight: var(--fw-medium);
+  }
+
+  .article-subtitle-small {
+    font-size: var(--fs-md);
+    line-height: var(--lh-normal);
+    font-weight: var(--fw-regular);
+    letter-spacing: var(--ls-wide);
+  }
+
+  @media (max-width: 768px) {
+    .sw-title {
+      font-size: var(--fs-lg);
+      line-height: var(--lh-normal);
+    }
+
+    .sw-title-large {
+      font-size: var(--fs-xl);
+      line-height: var(--lh-normal);
+    }
+
+    .sw-title-small {
+      font-size: var(--fs-md);
+      line-height: var(--lh-normal);
+    }
+
+    .sw-subtitle {
+      font-size: var(--fs-sm);
+      line-height: var(--lh-normal);
+    }
+
+    .sw-subtitle-large {
+      font-size: var(--fs-md);
+      line-height: var(--lh-normal);
+    }
+
+    .sw-subtitle-small {
+      font-size: var(--fs-xs);
+      line-height: var(--lh-normal);
+    }
+
+    .article-title {
+      font-size: var(--fs-2xl);
+      line-height: var(--lh-snug);
+    }
+
+    .article-title-large {
+      font-size: var(--fs-3xl);
+      line-height: var(--lh-snug);
+    }
+
+    .article-title-small {
+      font-size: var(--fs-xl);
+      line-height: var(--lh-normal);
+    }
+
+    .article-subtitle {
+      font-size: var(--fs-md);
+      line-height: var(--lh-normal);
+    }
+
+    .article-subtitle-small {
+      font-size: var(--fs-sm);
+      line-height: var(--lh-normal);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sw-title,
+    .sw-title-large,
+    .sw-title-small,
+    .sw-subtitle,
+    .sw-subtitle-large,
+    .sw-subtitle-small,
+    .article-title,
+    .article-title-large,
+    .article-title-small,
+    .article-subtitle,
+    .article-subtitle-small {
+      transition: none;
+    }
+  }
+
+  @media (prefers-contrast: high) {
+    .sw-title,
+    .sw-title-large,
+    .sw-title-small,
+    .article-title,
+    .article-title-large,
+    .article-title-small {
+      font-weight: var(--fw-bold);
+    }
+
+    .sw-subtitle,
+    .sw-subtitle-large,
+    .sw-subtitle-small,
+    .article-subtitle,
+    .article-subtitle-small {
+      font-weight: var(--fw-semibold);
+    }
+  }
+}

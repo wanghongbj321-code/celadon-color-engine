@@ -1,0 +1,501 @@
+/* =======================================
+ * Celadon Components — Form Controls
+ * 依赖：colors.css + spacing/surface/typography tokens + theme remaps
+ * 风格基准：中性灰底，边框+阴影体现交互
+ * ======================================= */
+
+/* ===== 基础密度标尺（可全局覆写） ===== */
+  :root {
+    --field-py: 0.5rem; /* 8px */
+    --field-px: 1rem; /* 16px */
+    --field-gap: 0.5rem;
+    --field-height: var(--hit-area); /* 保证可点区域 */
+  }
+  /* 紧凑密度，给容器或段落加 .celadon-density-compact 即可 */
+  .celadon-density-compact {
+    --field-py: 0.375rem;
+    --field-px: 0.75rem;
+    --field-gap: 0.375rem;
+  }
+
+  /* ===== 字段容器 ===== */
+  .celadon-field {
+    display: grid;
+    gap: 0.375rem;
+  }
+  .celadon-field__label {
+    font-size: var(--fs-sm);
+    font-weight: var(--fw-medium);
+    color: var(--c-text-title);
+    line-height: var(--lh-normal);
+  }
+  .celadon-field__hint {
+    font-size: var(--fs-xs);
+    color: var(--c-text-secondary);
+    line-height: var(--lh-relaxed);
+  }
+  .celadon-field__error {
+    font-size: var(--fs-xs);
+    color: var(--c-text-error);
+    line-height: var(--lh-relaxed);
+  }
+
+  /* ===== 控件基类（input/textarea/select 共享） ===== */
+  .celadon-control {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--field-gap);
+
+    min-height: var(--field-height);
+    padding: var(--field-py) var(--field-px);
+
+    width: 100%;
+    background: var(
+      --c-bg-input
+    ); /* 你的系统里是卡片/白色；若要“完全透明”，可改为 transparent */
+    color: var(--c-text-body);
+
+    border: var(--bw-1) solid var(--c-border-light);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-0);
+
+    font-size: var(--fs-md);
+    line-height: var(--lh-normal);
+
+    transition:
+      background-color var(--ease-base),
+      border-color var(--ease-fast),
+      box-shadow var(--ease-fast),
+      color var(--ease-fast);
+  }
+  .celadon-control::placeholder {
+    color: var(--c-text-placeholder);
+    opacity: 0.85;
+  }
+
+  /* hover：仅增边框微对比与轻阴影 */
+  .celadon-control:hover {
+    border-color: var(--c-border-medium);
+    box-shadow: var(--shadow-1);
+  }
+
+  /* focus：边框加深 + 中性 outline */
+  .celadon-control:focus-visible {
+    outline: var(--bw-2) solid var(--c-border-medium);
+    outline-offset: 2px;
+    border-color: var(--c-gray-400);
+    box-shadow: var(--shadow-2);
+  }
+  .theme-night .celadon-control:focus-visible {
+    outline-color: var(--c-border-medium);
+    box-shadow: var(--shadow-3);
+  }
+
+  /* 可选：中性焦点（不使用品牌色焦点环） */
+  .celadon-control--neutral-focus:focus-visible,
+  .celadon-field.celadon-control--neutral-focus .celadon-control:focus-visible {
+    outline: var(--bw-2) solid var(--c-border-medium);
+    outline-offset: 2px;
+    box-shadow: var(--shadow-3);
+  }
+  .theme-night .celadon-control--neutral-focus:focus-visible,
+  .theme-night
+    .celadon-field.celadon-control--neutral-focus
+    .celadon-control:focus-visible {
+    outline-color: var(--c-border-medium);
+    box-shadow: var(--shadow-4);
+  }
+
+  /* disabled */
+  .celadon-control:disabled,
+  .celadon-control[aria-disabled='true'] {
+    color: var(--c-text-disabled);
+    background: var(--c-bg-card);
+    border-color: var(--c-border-light);
+    opacity: 0.7;
+    cursor: not-allowed;
+    box-shadow: var(--shadow-0);
+  }
+
+  /* 校验状态 */
+  .celadon-field--error .celadon-control {
+    border-color: var(--c-text-error);
+  }
+  .celadon-field--error .celadon-control:focus-visible {
+    box-shadow:
+      var(--shadow-3),
+      0 0 0 2px color-mix(in srgb, var(--c-text-error) 35%, transparent);
+  }
+  .celadon-field--success .celadon-control {
+    border-color: var(--c-text-success);
+  }
+  .celadon-field--success .celadon-control:focus-visible {
+    box-shadow:
+      var(--shadow-3),
+      0 0 0 2px color-mix(in srgb, var(--c-text-success) 35%, transparent);
+  }
+
+  /* 尺寸变体 */
+  .celadon-control--sm {
+    padding: 0.375rem 0.75rem;
+    font-size: var(--fs-sm);
+  }
+  .celadon-control--lg {
+    padding: 0.75rem 1.125rem;
+    font-size: var(--fs-lg);
+  }
+
+  /* ===== 标准变体（基于商户详情页面样式偏好） ===== */
+  .celadon-control--standard {
+    /* 文字颜色 */
+    color: var(--c-text-title);
+    
+    /* 边框样式 */
+    border: 1px solid var(--c-border-medium);
+    border-radius: var(--radius-md);
+    
+    /* 字体大小 */
+    font-size: var(--fs-sm);
+    
+    /* 内边距 */
+    padding: var(--space-3);
+    
+    /* 移除阴影 */
+    box-shadow: none;
+  }
+
+  /* 标准变体 hover 状态 */
+  .celadon-control--standard:hover {
+    border-color: var(--c-border-medium);
+    box-shadow: none;
+  }
+
+  /* 标准变体 focus 状态 - 保持中性边框色，不使用品牌色 */
+  .celadon-control--standard:focus-visible {
+    outline: none;
+    border-color: var(--c-border-medium);
+    box-shadow: none;
+  }
+
+  /* 标准变体 disabled 状态 */
+  .celadon-control--standard:disabled,
+  .celadon-control--standard[aria-disabled='true'] {
+    color: var(--c-text-disabled);
+    background: var(--c-bg-page);
+    border-color: var(--c-border-medium);
+    opacity: 1; /* 无透明度 */
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  /* 错误状态 */
+  .celadon-input--error {
+    border-color: var(--c-text-error);
+    box-shadow: 0 0 0 1px var(--c-text-error);
+  }
+  .celadon-input--error:focus-visible {
+    box-shadow: 0 0 0 2px var(--c-text-error);
+  }
+
+  /* ===== 输入类具体化 ===== */
+  input.celadon-input,
+  textarea.celadon-textarea {
+    appearance: none;
+    -webkit-appearance: none;
+    background: inherit;
+    border: inherit;
+    border-radius: inherit;
+    padding: inherit;
+    color: inherit;
+    width: 100%;
+  }
+  textarea.celadon-textarea {
+    min-height: calc(var(--field-height) * 1.5);
+    resize: vertical;
+  }
+
+  /* ===== 标准控件打包（与 EmployeeForm.vue 保持一致） ===== */
+  /* 输入/选择/文本域：不依赖 .celadon-control 也可直接呈现标准外观 */
+  input.celadon-input.celadon-control--standard,
+  select.celadon-select.celadon-control--standard,
+  textarea.celadon-textarea.celadon-control--standard {
+    width: 100%;
+    padding: var(--space-3);
+    border: 1px solid var(--c-border-medium);
+    border-radius: var(--radius-md);
+    font-size: var(--fs-sm);
+    background: var(--c-bg-input);
+    color: var(--c-text-title);
+    transition: border-color 0.2s ease;
+    box-shadow: none;
+  }
+  input.celadon-input.celadon-control--standard:focus,
+  select.celadon-select.celadon-control--standard:focus,
+  textarea.celadon-textarea.celadon-control--standard:focus {
+    outline: none;
+    border-color: var(--c-border-medium);
+  }
+  input.celadon-input.celadon-control--standard:disabled,
+  select.celadon-select.celadon-control--standard:disabled,
+  textarea.celadon-textarea.celadon-control--standard:disabled {
+    background-color: var(--c-bg-page);
+    color: var(--c-text-disabled);
+    cursor: not-allowed;
+  }
+  /* 只读态：保持输入外观但禁用交互反馈 */
+  input.celadon-input.celadon-control--standard[readonly],
+  textarea.celadon-textarea.celadon-control--standard[readonly] {
+    background-color: var(--c-bg-input);
+    color: var(--c-text-body);
+    cursor: default;
+  }
+  /* 标准变体的错误态：与 EmployeeForm 一致，使用边框色强调，无阴影 */
+  input.celadon-input.celadon-control--standard.celadon-input--error,
+  select.celadon-select.celadon-control--standard.celadon-input--error,
+  textarea.celadon-textarea.celadon-control--standard.celadon-input--error {
+    border-color: var(--c-text-error);
+    box-shadow: none;
+  }
+
+  /* ===== Select：包一层以绘制箭头（不中断可访问性） ===== */
+  .celadon-select-wrap {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+  select.celadon-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: inherit;
+    border: inherit;
+    border-radius: inherit;
+    padding: var(--field-py) calc(var(--field-px) * 1.75) var(--field-py)
+      var(--field-px);
+    width: 100%;
+    color: inherit;
+  }
+  /* 标准变体的 select 需要覆盖 padding */
+  select.celadon-select.celadon-control--standard {
+    padding: var(--space-3) calc(var(--space-3) * 1.75) var(--space-3) var(--space-3);
+  }
+  .celadon-select-wrap::after {
+    content: '▾';
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: var(--fs-xs);
+    color: var(--c-text-secondary);
+    pointer-events: none;
+  }
+
+  /* ===== 前/后置图标 & 附件按钮 ===== */
+  .celadon-affix {
+    position: relative;
+  }
+  .celadon-affix .celadon-control {
+    padding-left: calc(var(--field-px) + 1.5rem);
+  }
+  .celadon-affix .celadon-affix__icon--leading {
+    position: absolute;
+    left: 0.625rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: var(--fs-sm);
+    color: var(--c-text-weak);
+    pointer-events: none;
+  }
+  .celadon-affix .celadon-affix__icon--trailing {
+    position: absolute;
+    right: 0.625rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: var(--fs-sm);
+    color: var(--c-text-weak);
+  }
+  .celadon-affix .celadon-affix__btn {
+    position: absolute;
+    right: 0.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    border: var(--bw-1) solid var(--c-border-light);
+    border-radius: var(--radius-sm);
+    padding: 0.25rem 0.375rem;
+    background: transparent;
+    color: var(--c-text-secondary);
+    transition:
+      border-color var(--ease-fast),
+      box-shadow var(--ease-fast);
+  }
+  .celadon-affix .celadon-affix__btn:hover {
+    border-color: var(--c-border-medium);
+    box-shadow: var(--shadow-1);
+    color: var(--c-text-title);
+  }
+
+  /* ===== Checkbox / Radio（中性风格 + 强化按压） ===== */
+  .celadon-check,
+  .celadon-radio {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  .celadon-check input,
+  .celadon-radio input {
+    appearance: none;
+    -webkit-appearance: none;
+    inline-size: 1rem;
+    block-size: 1rem;
+    margin: 0;
+    border: var(--bw-1) solid var(--c-border-medium);
+    background: var(--c-bg-card);
+    box-shadow: var(--shadow-0);
+    transition:
+      border-color var(--ease-fast),
+      box-shadow var(--ease-fast),
+      background-color var(--ease-fast);
+  }
+  .celadon-check input {
+    border-radius: 0.25rem;
+  }
+  .celadon-radio input {
+    border-radius: 9999px;
+  }
+
+  /* hover */
+  .celadon-check:hover input,
+  .celadon-radio:hover input {
+    border-color: var(--c-gray-400);
+    box-shadow: var(--shadow-1);
+  }
+
+  /* checked：默认用中性深灰填充；如果需要品牌强调，可在容器加 .celadon-accented 切换到青石 */
+  .celadon-check input:checked,
+  .celadon-radio input:checked {
+    background: var(--c-gray-800);
+    border-color: var(--c-gray-800);
+    box-shadow: var(--shadow-2);
+  }
+  .theme-night .celadon-check input:checked,
+  .theme-night .celadon-radio input:checked {
+    background: var(--c-gray-200);
+    border-color: var(--c-gray-200);
+  }
+  /* 青石版本（可选） */
+  .celadon-accented .celadon-check input:checked,
+  .celadon-accented .celadon-radio input:checked {
+    background: var(--brand-rail);
+    border-color: var(--brand-rail);
+  }
+
+  /* Radio 的内点 */
+  .celadon-radio input:checked {
+    background-image: radial-gradient(
+      circle at center,
+      var(--c-bg-card) 0 35%,
+      transparent 36%
+    );
+  }
+
+  /* Label 文案 */
+  .celadon-check span,
+  .celadon-radio span {
+    color: var(--c-text-body);
+    font-size: var(--fs-sm);
+  }
+
+  /* ===== Switch（中性轨道 + 阴影 thumb） ===== */
+  .celadon-switch {
+    --switch-w: 2.25rem;
+    --switch-h: 1.25rem;
+    position: relative;
+    inline-size: var(--switch-w);
+    block-size: var(--switch-h);
+  }
+  .celadon-switch input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background: var(--c-border-medium);
+    border-radius: var(--radius-full);
+    position: relative;
+    transition:
+      background-color var(--ease-fast),
+      box-shadow var(--ease-fast);
+    box-shadow: inset 0 0 0 1px var(--c-border-light);
+  }
+  .celadon-switch input::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    inline-size: calc(var(--switch-h) - 4px);
+    block-size: calc(var(--switch-h) - 4px);
+    background: var(--c-bg-card);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-2);
+    transition: transform var(--ease-fast);
+  }
+  .celadon-switch input:checked {
+    background: var(--c-gray-700);
+    box-shadow: inset 0 0 0 1px var(--c-gray-600);
+  }
+  .celadon-switch input:checked::after {
+    transform: translateX(calc(var(--switch-w) - var(--switch-h)));
+  }
+  /* 青石版开关（可选） */
+  .celadon-accented .celadon-switch input:checked {
+    background: var(--brand-rail);
+    box-shadow: inset 0 0 0 1px var(--brand-rail);
+  }
+
+  /* ===== 移动端按压增强 ===== */
+  @media (hover: none) and (pointer: coarse) {
+    .celadon-control:active {
+      border-color: var(--c-gray-400);
+      box-shadow: var(--shadow-3);
+    }
+  }
+
+  /* ===== 无障碍 ===== */
+  @media (prefers-reduced-motion: reduce) {
+    .celadon-control,
+    .celadon-check input,
+    .celadon-radio input,
+    .celadon-switch input {
+      transition: none;
+    }
+  }
+  @media (prefers-contrast: high) {
+    .celadon-control {
+      border-width: var(--bw-2);
+    }
+    .celadon-select-wrap::after {
+      color: CanvasText;
+    }
+  }
+
+  /* ===== 验证码显示 ===== */
+  .celadon-captcha-display {
+    background: var(--c-bg-page);
+    border: var(--bw-2) solid var(--c-border-medium);
+    border-radius: var(--radius-sm);
+    color: var(--c-text-title);
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-bold);
+    letter-spacing: 0.25em;
+    font-family: var(--font-mono);
+    user-select: none;
+    cursor: default;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 100px;
+    height: 36px;
+    min-width: 100px;
+  }

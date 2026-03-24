@@ -1,0 +1,167 @@
+/* =======================================
+ * Celadon Components — Card (tokenized)
+ * ======================================= */
+@layer components {
+  .celadon-card {
+    background: var(--c-bg-card);
+    border: var(--bw-1) solid var(--c-border-light);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-1);
+    transition:
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow var(--ease-base),
+      background-color var(--ease-base),
+      border-color var(--ease-base);
+    padding: var(--space-4);
+    will-change: transform;
+    transform: translateZ(0);
+  }
+  .celadon-card:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-3);
+  }
+
+  /* 夜间 */
+  .theme-night .celadon-card {
+    background: var(--c-bg-card);
+    border-color: var(--c-border-light);
+    box-shadow: var(--shadow-1);
+  }
+  .theme-night .celadon-card:hover {
+    box-shadow: var(--shadow-3);
+  }
+
+  /* Variants */
+  .celadon-card--message {
+    border-radius: var(--radius-2xl);
+    padding: var(--space-4) calc(var(--space-4) + var(--space-1));
+  }
+  .celadon-card--message.celadon-card--ai {
+    border-bottom-left-radius: var(--radius-sm);
+  }
+  .celadon-card--message.celadon-card--user {
+    border-bottom-right-radius: var(--radius-sm);
+  }
+  .celadon-card--elevated {
+    box-shadow: var(--shadow-2);
+  }
+  .celadon-card--elevated:hover {
+    box-shadow: var(--shadow-4);
+  }
+  .celadon-card--compact {
+    padding: var(--space-3);
+  }
+  .celadon-card--large {
+    padding: var(--space-6);
+  }
+  .celadon-card--borderless {
+    border: none;
+    box-shadow: var(--shadow-1);
+  }
+
+  /* 内容 */
+  .celadon-card__title {
+    font-size: var(--fs-md);
+    font-weight: var(--fw-semibold);
+    color: var(--c-text-title);
+    margin: 0 0 var(--space-2) 0;
+    line-height: 1.4;
+  }
+  .celadon-card__subtitle {
+    font-size: var(--fs-sm);
+    color: var(--c-text-secondary);
+    margin: 0 0 var(--space-3) 0;
+    line-height: 1.4;
+  }
+  .celadon-card__content {
+    color: var(--c-text-body);
+    line-height: var(--lh-normal);
+  }
+  .celadon-card__actions {
+    margin-top: var(--space-4);
+    display: flex;
+    gap: var(--space-2);
+    justify-content: flex-end;
+  }
+
+  /* 按钮在卡片内部保持继承语义，不再硬编码灰度 */
+  .celadon-card .celadon-btn--primary,
+  .celadon-card .celadon-btn--secondary,
+  .celadon-card .celadon-btn--text {
+    border-radius: var(--radius-sm);
+  }
+
+  /* 焦点：中性 outline */
+  .celadon-card .celadon-btn:focus-visible {
+    outline: var(--bw-2) solid var(--c-border-medium);
+    outline-offset: 2px;
+    box-shadow: none;
+  }
+  .theme-night .celadon-card .celadon-btn:focus-visible {
+    outline-color: var(--c-border-medium);
+    box-shadow: none;
+  }
+
+  /* Animations */
+  @keyframes celadon-card-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .celadon-card--animate {
+    animation: celadon-card-fade-in 0.3s ease-out;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .celadon-card {
+      padding: var(--space-3);
+      border-radius: var(--radius-lg);
+    }
+    .celadon-card--message {
+      padding: var(--space-2) var(--space-3);
+      border-radius: var(--radius-xl);
+    }
+    .celadon-card--compact {
+      padding: var(--space-2);
+    }
+    .celadon-card--large {
+      padding: var(--space-5);
+    }
+  }
+
+  /* A11y */
+  @media (prefers-reduced-motion: reduce) {
+    .celadon-card {
+      transition: none;
+    }
+    .celadon-card:hover {
+      transform: none;
+    }
+    .celadon-card--animate {
+      animation: none;
+    }
+  }
+  @media (prefers-contrast: high) {
+    .celadon-card {
+      border-width: var(--bw-2);
+      box-shadow: var(--shadow-2);
+    }
+    .celadon-card--borderless {
+      border: var(--bw-2) solid var(--c-border-medium);
+    }
+  }
+
+  /* Night header as card */
+  .theme-night header.styled-card {
+    border-bottom: none;
+    border-color: var(--c-border-night-light);
+    box-shadow: var(--shadow-2);
+  }
+}
+
