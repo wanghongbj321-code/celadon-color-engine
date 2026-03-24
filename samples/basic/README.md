@@ -1,21 +1,33 @@
-# Basic Sample
+# Basic Showcase Sample
 
-这个示例用于快速预览 Celadon Color Engine 的基础能力：
+This sample is a broader showcase for Celadon Color Engine rather than a minimal demo.
 
-- `theme-day` / `theme-night` 切换
-- `celadon-btn` 按钮变体
-- `celadon-card` 卡片样式
-- `themed-input` 输入表面
+It is designed to present the system as a cohesive design foundation, including:
+
+- day/night theme switching
+- semantic token rendering
+- brand accent application
+- spacious layered surfaces
+- typography hierarchy
+- status badges, buttons, forms, and tables
 
 ## Files
 
-- `index.html`：最小可运行示例
+- `index.html`: the main showcase page
+
+## What This Sample Demonstrates
+
+- Semantic color tokens such as page, card, text, and feedback surfaces
+- Theme remapping through `theme-day` and `theme-night`
+- Brand token usage through `--brand-rail`, `--brand-node`, and `--brand-ring`
+- Reusable UI primitives including cards, buttons, status styles, inputs, and table surfaces
+- A more presentation-oriented layout suitable for design system previews
 
 ## Usage
 
-如果你只是想快速预览，可以直接打开 `samples/basic/index.html`。
+To preview the sample quickly, open `samples/basic/index.html` in a browser.
 
-如果你要把它接入业务项目，建议参考根目录 `README.md`，按目标平台引入：
+To integrate Celadon Color Engine into an application, refer to the root `README.md` and import:
 
 - `index.css`
-- `desktop.css` 或 `web-mobile.css` 或 `mobile.css`
+- one platform layer: `desktop.css`, `web-mobile.css`, or `mobile.css`
