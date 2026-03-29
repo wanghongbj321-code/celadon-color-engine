@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="../../web-mobile.css" />
     <style>
       :root {
-        --mobile-accent-text: var(--c-accent-text-day);
         --mobile-safe-top: env(safe-area-inset-top, 0px);
         --mobile-safe-bottom: env(safe-area-inset-bottom, 0px);
       }
@@ -37,104 +36,26 @@
         padding:
           max(16px, var(--mobile-safe-top)) 16px
           max(16px, var(--mobile-safe-bottom));
-        background:
-          radial-gradient(circle at 50% 0%, rgba(20, 184, 166, 0.18), transparent 30%),
-          radial-gradient(circle at 20% 12%, rgba(153, 246, 228, 0.16), transparent 24%),
-          radial-gradient(circle at 88% 8%, rgba(45, 212, 191, 0.12), transparent 20%),
-          linear-gradient(180deg, color-mix(in srgb, var(--c-bg-page) 92%, white 8%), var(--c-bg-page));
-      }
-
-      .theme-night {
-        --mobile-accent-text: var(--c-accent-text-night);
-        background:
-          radial-gradient(circle at 50% 0%, rgba(45, 212, 191, 0.24), transparent 30%),
-          radial-gradient(circle at 18% 10%, rgba(94, 234, 212, 0.12), transparent 22%),
-          radial-gradient(circle at 84% 8%, rgba(20, 184, 166, 0.16), transparent 18%),
-          linear-gradient(180deg, #06111d, var(--c-bg-page));
+        background: var(--c-bg-page);
       }
 
       .mobile-shell {
-        position: relative;
-        isolation: isolate;
         width: min(100%, 430px);
         min-height: min(932px, 95vh);
         border-radius: 36px;
         overflow: hidden;
-        border: 1px solid color-mix(in srgb, var(--c-border-light) 84%, white 16%);
-        background:
-          linear-gradient(180deg, color-mix(in srgb, var(--c-bg-card) 90%, white 10%), color-mix(in srgb, var(--c-bg-page) 92%, transparent 8%));
-        box-shadow:
-          0 34px 100px rgba(15, 23, 42, 0.2),
-          0 12px 30px rgba(15, 23, 42, 0.08),
-          inset 0 1px 0 rgba(255, 255, 255, 0.5);
-        backdrop-filter: blur(22px) saturate(145%);
-        -webkit-backdrop-filter: blur(22px) saturate(145%);
-      }
-
-      .mobile-shell::before,
-      .mobile-shell::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-      }
-
-      .mobile-shell::before {
-        z-index: 0;
-        background:
-          radial-gradient(circle at top, rgba(255, 255, 255, 0.32), transparent 18%),
-          linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 16%);
-      }
-
-      .mobile-shell::after {
-        inset: 1px;
-        z-index: 0;
-        border-radius: inherit;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-      }
-
-      .theme-night .mobile-shell {
-        border-color: color-mix(in srgb, var(--c-border-medium) 76%, white 8%);
-        background:
-          linear-gradient(180deg, rgba(15, 23, 42, 0.84), rgba(15, 23, 42, 0.98));
-        box-shadow:
-          0 36px 110px rgba(0, 0, 0, 0.5),
-          0 12px 30px rgba(0, 0, 0, 0.26),
-          inset 0 1px 0 rgba(255, 255, 255, 0.06);
       }
 
       .mobile-app {
         position: relative;
-        z-index: 1;
         display: grid;
         grid-template-rows: auto 1fr auto;
         min-height: inherit;
       }
 
-      .mobile-hardware {
-        position: absolute;
-        top: calc(max(10px, var(--mobile-safe-top)) + 4px);
-        left: 50%;
-        z-index: 2;
-        transform: translateX(-50%);
-        pointer-events: none;
-      }
-
-      .mobile-island {
-        display: block;
-        width: 118px;
-        height: 30px;
-        border-radius: 999px;
-        background:
-          linear-gradient(180deg, rgba(16, 23, 35, 0.98), rgba(8, 12, 20, 0.96));
-        box-shadow:
-          inset 0 1px 1px rgba(255, 255, 255, 0.06),
-          0 8px 18px rgba(0, 0, 0, 0.22);
-      }
-
       .mobile-header {
         padding:
-          calc(max(16px, var(--mobile-safe-top)) + 34px) 18px
+          max(16px, var(--mobile-safe-top)) 18px
           14px 18px;
       }
 
@@ -154,57 +75,8 @@
         gap: 8px;
       }
 
-      .mobile-status-pill {
-        padding: 3px 8px;
-        border-radius: var(--radius-full);
-        border: 1px solid var(--c-border-light);
-        background: color-mix(in srgb, var(--c-bg-card) 82%, transparent);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
-      }
-
       .mobile-hero {
-        position: relative;
-        overflow: hidden;
         padding: 22px;
-        border-radius: 30px;
-        border: 1px solid color-mix(in srgb, rgba(255, 255, 255, 0.28) 70%, transparent);
-        color: var(--mobile-accent-text);
-        background:
-          radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.3), transparent 22%),
-          radial-gradient(circle at top left, rgba(255, 255, 255, 0.28), transparent 28%),
-          linear-gradient(135deg, var(--brand-node), var(--brand-rail));
-        box-shadow:
-          0 22px 48px color-mix(in srgb, var(--brand-node) 32%, transparent),
-          0 10px 20px rgba(15, 23, 42, 0.08),
-          inset 0 1px 0 rgba(255, 255, 255, 0.28);
-      }
-
-      .mobile-hero::before {
-        content: "";
-        position: absolute;
-        inset: auto 14px 12px auto;
-        width: 110px;
-        height: 110px;
-        border-radius: 50%;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        opacity: 0.8;
-      }
-
-      .mobile-hero::after {
-        content: "";
-        position: absolute;
-        right: -36px;
-        top: -42px;
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.26), transparent 70%);
-      }
-
-      .mobile-hero p,
-      .mobile-hero small,
-      .mobile-hero .sw-title-large {
-        color: inherit;
       }
 
       .mobile-hero-actions {
@@ -213,21 +85,6 @@
         justify-content: space-between;
         gap: var(--space-3);
         margin-top: var(--space-4);
-      }
-
-      .mobile-ghost-chip {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: var(--hit-area);
-        padding: 0.55rem 0.95rem;
-        border-radius: var(--radius-full);
-        border: 1px solid rgba(255, 255, 255, 0.22);
-        color: inherit;
-        background: rgba(255, 255, 255, 0.14);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
       }
 
       .mobile-content {
@@ -249,37 +106,7 @@
       }
 
       .mobile-panel {
-        position: relative;
-        overflow: hidden;
         padding: 16px;
-        border-radius: 26px;
-        border: 1px solid color-mix(in srgb, var(--c-border-light) 88%, white 12%);
-        background:
-          radial-gradient(circle at top left, rgba(255, 255, 255, 0.18), transparent 28%),
-          linear-gradient(180deg, color-mix(in srgb, var(--c-bg-card) 92%, white 8%), color-mix(in srgb, var(--c-bg-card) 98%, transparent 2%));
-        box-shadow:
-          0 16px 32px rgba(15, 23, 42, 0.08),
-          0 6px 14px rgba(15, 23, 42, 0.03),
-          inset 0 1px 0 rgba(255, 255, 255, 0.38);
-      }
-
-      .mobile-panel::before {
-        content: "";
-        position: absolute;
-        inset: 0 0 auto;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.65), transparent);
-      }
-
-      .theme-night .mobile-panel {
-        border-color: var(--c-border-medium);
-        background:
-          radial-gradient(circle at top left, rgba(255, 255, 255, 0.05), transparent 26%),
-          linear-gradient(180deg, rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.94));
-        box-shadow:
-          0 18px 42px rgba(0, 0, 0, 0.3),
-          0 6px 18px rgba(0, 0, 0, 0.18),
-          inset 0 1px 0 rgba(255, 255, 255, 0.04);
       }
 
       .mobile-panel-header {
@@ -302,15 +129,6 @@
 
       .mobile-kpi {
         padding: 12px;
-        border-radius: 18px;
-        border: 1px solid var(--c-border-light);
-        background: color-mix(in srgb, var(--c-bg-page) 72%, white 28%);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
-      }
-
-      .theme-night .mobile-kpi {
-        border-color: var(--c-border-medium);
-        background: color-mix(in srgb, var(--c-bg-card) 88%, black 12%);
       }
 
       .mobile-kpi strong {
@@ -336,22 +154,13 @@
         gap: 10px;
         align-items: center;
         padding: 10px 12px;
-        border-radius: 18px;
-        background: color-mix(in srgb, var(--c-bg-page) 74%, white 26%);
-        border: 1px solid var(--c-border-light);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
-      }
-
-      .theme-night .mobile-token-item {
-        background: color-mix(in srgb, var(--c-bg-card) 88%, black 12%);
-        border-color: var(--c-border-medium);
       }
 
       .mobile-swatch {
         width: 16px;
         height: 44px;
         border-radius: 999px;
-        border: 1px solid color-mix(in srgb, var(--c-border-medium) 70%, transparent);
+        border: var(--bw-1) solid var(--c-border-light);
         background: var(--swatch-color);
       }
 
@@ -390,59 +199,34 @@
         flex-wrap: wrap;
       }
 
-      .mobile-accent-pill {
-        flex: 1;
-        min-width: 90px;
-        padding: 12px;
-        border-radius: 18px;
-        color: white;
-        font-size: var(--fs-xs);
-        font-weight: var(--fw-semibold);
-        box-shadow: var(--shadow-2);
-      }
-
-      .mobile-accent-pill:nth-child(1) {
-        background: var(--brand-rail);
-      }
-
-      .mobile-accent-pill:nth-child(2) {
-        background: var(--brand-node);
-      }
-
-      .mobile-accent-pill:nth-child(3) {
-        background: var(--brand-ring);
-        color: var(--c-bg-base-night);
-      }
-
       .mobile-form {
         display: grid;
         gap: 12px;
+      }
+
+      .mobile-timeline-layout {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: var(--space-3);
+        align-items: start;
+      }
+
+      .mobile-timeline {
+        --timeline-length: 176px;
+      }
+
+      /* Keep page hover interactions available when modal is closed. */
+      .celadon-modal[aria-hidden="true"] .celadon-modal--overlay,
+      .celadon-modal[aria-hidden="true"] .celadon-modal--content {
+        pointer-events: none;
       }
 
       .mobile-bottom-nav {
         position: relative;
         padding:
           10px 16px max(14px, var(--mobile-safe-bottom));
-        border-top: 1px solid color-mix(in srgb, var(--c-border-light) 82%, white 18%);
-        background: color-mix(in srgb, var(--c-bg-card) 88%, white 12%);
-        box-shadow: 0 -10px 24px rgba(15, 23, 42, 0.08);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-      }
-
-      .mobile-bottom-nav::before {
-        content: "";
-        position: absolute;
-        inset: 0 0 auto;
-        height: 18px;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.14), transparent);
-        pointer-events: none;
-      }
-
-      .theme-night .mobile-bottom-nav {
-        border-color: var(--c-border-medium);
-        background: rgba(15, 23, 42, 0.9);
-        box-shadow: 0 -14px 28px rgba(0, 0, 0, 0.24);
+        border-top: var(--bw-1) solid var(--c-border-light);
+        background: var(--c-bg-card);
       }
 
       .mobile-bottom-nav-list {
@@ -474,7 +258,7 @@
       }
 
       .mobile-nav-item.is-active strong {
-        background: color-mix(in srgb, var(--brand-rail) 14%, transparent);
+        background: var(--c-bg-info);
       }
 
       .mobile-home-indicator {
@@ -482,7 +266,7 @@
         height: 5px;
         margin: 10px auto 0;
         border-radius: 999px;
-        background: color-mix(in srgb, var(--c-text-secondary) 40%, transparent);
+        background: var(--c-border-medium);
       }
 
       @media (max-width: 420px) {
@@ -499,29 +283,33 @@
           border-right: none;
         }
 
-        .mobile-shell::after {
-          border: none;
+        .mobile-timeline-layout {
+          grid-template-columns: 1fr;
         }
+
       }
     </style>
   </head>
   <body class="theme-day">
     <main class="mobile-shell">
       <div class="mobile-app">
-        <div class="mobile-hardware" aria-hidden="true">
-          <span class="mobile-island"></span>
-        </div>
         <header class="mobile-header">
           <div class="mobile-statusbar">
             <span>9:41</span>
             <div class="mobile-status-icons">
-              <span class="mobile-status-pill">5G</span>
-              <span class="mobile-status-pill">100%</span>
+              <span class="celadon-status celadon-status--sm celadon-status--neutral">
+                <span class="celadon-status__text">5G</span>
+              </span>
+              <span class="celadon-status celadon-status--sm celadon-status--neutral">
+                <span class="celadon-status__text">100%</span>
+              </span>
             </div>
           </div>
 
-          <section class="mobile-hero">
-            <small>Mobile Showcase</small>
+          <section class="mobile-hero celadon-card celadon-card--large">
+            <span class="celadon-status celadon-status--sm celadon-status--outline celadon-status--info">
+              <span class="celadon-status__text">Mobile Showcase</span>
+            </span>
             <div class="sample-stack" style="gap: var(--space-2)">
               <strong class="sw-title-large">Celadon, tuned for touch-first interfaces.</strong>
               <p class="sw-subtitle-small">
@@ -530,14 +318,16 @@
               </p>
             </div>
             <div class="mobile-hero-actions">
-              <span class="mobile-ghost-chip" id="theme-mode-badge">Theme: Day</span>
-              <button type="button" class="mobile-ghost-chip">QingStone</button>
+              <span class="celadon-status celadon-status--sm celadon-status--neutral">
+                <span class="celadon-status__text" id="theme-mode-badge">Theme: Day</span>
+              </span>
+              <button type="button" class="celadon-btn celadon-btn--secondary celadon-btn--pill">QingStone</button>
             </div>
           </section>
         </header>
 
         <section class="mobile-content">
-          <article class="mobile-panel">
+          <article class="mobile-panel celadon-card">
             <div class="mobile-panel-header">
               <div>
                 <p class="sw-title">Overview</p>
@@ -548,22 +338,22 @@
             </div>
 
             <div class="mobile-kpi-grid">
-              <div class="mobile-kpi">
+              <div class="mobile-kpi celadon-card celadon-card--compact">
                 <strong>44px</strong>
                 <span>touch target</span>
               </div>
-              <div class="mobile-kpi">
+              <div class="mobile-kpi celadon-card celadon-card--compact">
                 <strong>2</strong>
                 <span>theme modes</span>
               </div>
-              <div class="mobile-kpi">
+              <div class="mobile-kpi celadon-card celadon-card--compact">
                 <strong>100%</strong>
                 <span>semantic tokens</span>
               </div>
             </div>
           </article>
 
-          <article class="mobile-panel">
+          <article class="mobile-panel celadon-card">
             <div class="mobile-panel-header">
               <div>
                 <p class="sw-title">Theme Switching</p>
@@ -591,7 +381,7 @@
             </div>
           </article>
 
-          <article class="mobile-panel">
+          <article class="mobile-panel celadon-card">
             <div class="mobile-panel-header">
               <div>
                 <p class="sw-title">Semantic Color Tokens</p>
@@ -602,7 +392,7 @@
             </div>
 
             <div class="mobile-token-list">
-              <div class="mobile-token-item">
+              <div class="mobile-token-item celadon-card celadon-card--compact">
                 <div class="mobile-swatch" style="--swatch-color: var(--c-bg-page)"></div>
                 <div class="mobile-token-meta">
                   <span class="mobile-token-name">Page background</span>
@@ -610,7 +400,7 @@
                 </div>
                 <span class="mobile-token-value" data-token="--c-bg-page"></span>
               </div>
-              <div class="mobile-token-item">
+              <div class="mobile-token-item celadon-card celadon-card--compact">
                 <div class="mobile-swatch" style="--swatch-color: var(--c-bg-card)"></div>
                 <div class="mobile-token-meta">
                   <span class="mobile-token-name">Card surface</span>
@@ -618,7 +408,7 @@
                 </div>
                 <span class="mobile-token-value" data-token="--c-bg-card"></span>
               </div>
-              <div class="mobile-token-item">
+              <div class="mobile-token-item celadon-card celadon-card--compact">
                 <div class="mobile-swatch" style="--swatch-color: var(--c-text-title)"></div>
                 <div class="mobile-token-meta">
                   <span class="mobile-token-name">Title text</span>
@@ -626,7 +416,7 @@
                 </div>
                 <span class="mobile-token-value" data-token="--c-text-title"></span>
               </div>
-              <div class="mobile-token-item">
+              <div class="mobile-token-item celadon-card celadon-card--compact">
                 <div class="mobile-swatch" style="--swatch-color: var(--c-bg-info)"></div>
                 <div class="mobile-token-meta">
                   <span class="mobile-token-name">Info surface</span>
@@ -637,7 +427,7 @@
             </div>
           </article>
 
-          <article class="mobile-panel">
+          <article class="mobile-panel celadon-card">
             <div class="mobile-panel-header">
               <div>
                 <p class="sw-title">Brand Accent Usage</p>
@@ -648,9 +438,15 @@
             </div>
 
             <div class="mobile-accent-row">
-              <div class="mobile-accent-pill">Rail</div>
-              <div class="mobile-accent-pill">Node</div>
-              <div class="mobile-accent-pill">Ring</div>
+              <span class="celadon-status celadon-status--outline celadon-status--info">
+                <span class="celadon-status__text">Rail</span>
+              </span>
+              <span class="celadon-status celadon-status--outline celadon-status--warning">
+                <span class="celadon-status__text">Node</span>
+              </span>
+              <span class="celadon-status celadon-status--subtle celadon-status--success">
+                <span class="celadon-status__text">Ring</span>
+              </span>
             </div>
 
             <div class="mobile-action-row" style="margin-top: 12px">
@@ -666,7 +462,7 @@
             </div>
           </article>
 
-          <article class="mobile-panel">
+          <article class="mobile-panel celadon-card">
             <div class="mobile-panel-header">
               <div>
                 <p class="sw-title">Status System</p>
@@ -687,9 +483,66 @@
                 <span class="celadon-status__text">Preview</span>
               </span>
             </div>
+
+            <div class="themed-divider"></div>
+
+            <div class="mobile-action-row">
+              <button id="open-mobile-modal" type="button" class="celadon-btn celadon-btn--primary">
+                Open Modal
+              </button>
+              <button type="button" class="celadon-btn celadon-btn--secondary">
+                Dismiss Later
+              </button>
+            </div>
           </article>
 
-          <article class="mobile-panel">
+          <article class="mobile-panel celadon-card">
+            <div class="mobile-panel-header">
+              <div>
+                <p class="sw-title">Mobile Timeline</p>
+                <p class="sw-subtitle-small mobile-subtle">
+                  Compact rollout steps rendered by native timeline primitives.
+                </p>
+              </div>
+            </div>
+
+            <div class="mobile-timeline-layout">
+              <div class="celadon-timeline celadon-timeline--small mobile-timeline" aria-hidden="true">
+                <span class="celadon-timeline__dot celadon-timeline__dot--active"></span>
+                <span class="celadon-timeline__line"></span>
+                <span class="celadon-timeline__dot celadon-timeline__dot--active"></span>
+                <span class="celadon-timeline__line"></span>
+                <span class="celadon-timeline__dot"></span>
+                <span class="celadon-timeline__line"></span>
+                <span class="celadon-timeline__dot"></span>
+              </div>
+
+              <div class="sample-stack" style="gap: var(--space-2)">
+                <div class="celadon-card celadon-card--compact">
+                  <span class="celadon-status celadon-status--sm celadon-status--subtle celadon-status--success">
+                    <span class="celadon-status__text">Token mapping done</span>
+                  </span>
+                </div>
+                <div class="celadon-card celadon-card--compact">
+                  <span class="celadon-status celadon-status--sm celadon-status--subtle celadon-status--info">
+                    <span class="celadon-status__text">Night QA ongoing</span>
+                  </span>
+                </div>
+                <div class="celadon-card celadon-card--compact">
+                  <span class="celadon-status celadon-status--sm celadon-status--outline celadon-status--warning">
+                    <span class="celadon-status__text">A11y test queued</span>
+                  </span>
+                </div>
+                <div class="celadon-card celadon-card--compact">
+                  <span class="celadon-status celadon-status--sm celadon-status--neutral">
+                    <span class="celadon-status__text">Release pending</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="mobile-panel celadon-card">
             <div class="mobile-panel-header">
               <div>
                 <p class="sw-title">Touch-Ready Form Surface</p>
@@ -756,12 +609,45 @@
       </div>
     </main>
 
+    <div
+      id="mobile-sample-modal"
+      class="celadon-modal celadon-modal--small celadon-modal--confirm"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="mobile-modal-title"
+      aria-hidden="true"
+    >
+      <div class="celadon-modal--overlay" data-mobile-modal-close></div>
+      <div class="celadon-modal--content">
+        <div class="celadon-modal__header">
+          <h2 id="mobile-modal-title" class="celadon-modal__title">Mobile Checkpoint</h2>
+          <button type="button" class="celadon-modal__close" data-mobile-modal-close aria-label="Close modal">
+            x
+          </button>
+        </div>
+        <div class="celadon-modal__body">
+          <p class="sw-subtitle-small">Native modal confirms touch-ready actions with semantic component styles.</p>
+        </div>
+        <div class="celadon-modal__footer celadon-modal__footer--right">
+          <button type="button" class="celadon-btn celadon-btn--secondary" data-mobile-modal-close>
+            Cancel
+          </button>
+          <button type="button" class="celadon-btn celadon-btn--primary" data-mobile-modal-close>
+            Continue
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script>
       const body = document.body;
       const dayButton = document.getElementById("theme-day-btn");
       const nightButton = document.getElementById("theme-night-btn");
       const themeModeBadge = document.getElementById("theme-mode-badge");
       const tokenNodes = document.querySelectorAll("[data-token]");
+      const openMobileModalButton = document.getElementById("open-mobile-modal");
+      const mobileSampleModal = document.getElementById("mobile-sample-modal");
+      const mobileModalCloseNodes = document.querySelectorAll("[data-mobile-modal-close]");
 
       function getTokenValue(name) {
         return getComputedStyle(body).getPropertyValue(name).trim();
@@ -794,8 +680,29 @@
         renderThemeState();
       }
 
+      function openMobileModal() {
+        mobileSampleModal.classList.add("is-open");
+        mobileSampleModal.setAttribute("aria-hidden", "false");
+      }
+
+      function closeMobileModal() {
+        mobileSampleModal.classList.remove("is-open");
+        mobileSampleModal.setAttribute("aria-hidden", "true");
+      }
+
       dayButton.addEventListener("click", () => applyTheme("theme-day"));
       nightButton.addEventListener("click", () => applyTheme("theme-night"));
+      openMobileModalButton.addEventListener("click", openMobileModal);
+
+      mobileModalCloseNodes.forEach((node) => {
+        node.addEventListener("click", closeMobileModal);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && mobileSampleModal.classList.contains("is-open")) {
+          closeMobileModal();
+        }
+      });
 
       renderThemeState();
     </script>

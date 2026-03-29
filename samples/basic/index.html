@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../../desktop.css" />
     <style>
       :root {
-        --sample-brand-text: var(--c-accent-text-day);
         --sample-shell-width: min(80vw, 1440px);
       }
 
@@ -24,18 +23,7 @@
       body {
         margin: 0;
         min-height: 100vh;
-        background:
-          radial-gradient(circle at top left, rgba(20, 184, 166, 0.12), transparent 28%),
-          radial-gradient(circle at top right, rgba(45, 212, 191, 0.12), transparent 30%),
-          linear-gradient(180deg, color-mix(in srgb, var(--c-bg-page) 92%, white 8%), var(--c-bg-page));
-      }
-
-      .theme-night {
-        --sample-brand-text: var(--c-accent-text-night);
-        background:
-          radial-gradient(circle at top left, rgba(45, 212, 191, 0.18), transparent 24%),
-          radial-gradient(circle at top right, rgba(20, 184, 166, 0.16), transparent 28%),
-          linear-gradient(180deg, #07131f, var(--c-bg-page));
+        background: var(--c-bg-page);
       }
 
       .sample-app {
@@ -76,24 +64,6 @@
         position: relative;
         overflow: hidden;
         padding: clamp(20px, 2vw, 32px);
-        border-radius: 28px;
-        border: 1px solid color-mix(in srgb, var(--c-border-light) 88%, white 12%);
-        background:
-          linear-gradient(180deg, color-mix(in srgb, var(--c-bg-card) 84%, white 16%), color-mix(in srgb, var(--c-bg-card) 96%, transparent 4%));
-        box-shadow:
-          0 20px 40px rgba(15, 23, 42, 0.08),
-          inset 0 1px 0 rgba(255, 255, 255, 0.5);
-        backdrop-filter: blur(24px) saturate(140%);
-        -webkit-backdrop-filter: blur(24px) saturate(140%);
-      }
-
-      .theme-night .sample-panel {
-        border-color: color-mix(in srgb, var(--c-border-medium) 78%, white 8%);
-        background:
-          linear-gradient(180deg, rgba(15, 23, 42, 0.78), rgba(15, 23, 42, 0.92));
-        box-shadow:
-          0 24px 48px rgba(0, 0, 0, 0.35),
-          inset 0 1px 0 rgba(255, 255, 255, 0.06);
       }
 
       .sample-hero {
@@ -101,18 +71,6 @@
         grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
         gap: var(--space-6);
         min-height: 340px;
-      }
-
-      .sample-eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: var(--space-2);
-        padding: 0.4rem 0.8rem;
-        border-radius: var(--radius-full);
-        color: var(--c-text-body);
-        background: color-mix(in srgb, var(--c-bg-card) 76%, var(--brand-ring) 24%);
-        border: 1px solid color-mix(in srgb, var(--brand-ring) 42%, transparent);
-        width: fit-content;
       }
 
       .sample-hero-copy {
@@ -133,14 +91,6 @@
 
       .sample-stat {
         padding: var(--space-4);
-        border-radius: 22px;
-        background: color-mix(in srgb, var(--c-bg-page) 72%, white 28%);
-        border: 1px solid var(--c-border-light);
-      }
-
-      .theme-night .sample-stat {
-        background: color-mix(in srgb, var(--c-bg-card) 88%, black 12%);
-        border-color: var(--c-border-medium);
       }
 
       .sample-stat-label {
@@ -158,89 +108,10 @@
         color: var(--c-text-title);
       }
 
-      .sample-orb-stage {
-        position: relative;
-        min-height: 280px;
-        border-radius: 32px;
-        border: 1px solid color-mix(in srgb, var(--brand-ring) 30%, transparent);
-        background:
-          radial-gradient(circle at 25% 25%, color-mix(in srgb, var(--brand-ring) 88%, white 12%), transparent 26%),
-          radial-gradient(circle at 70% 38%, color-mix(in srgb, var(--brand-node) 78%, white 22%), transparent 30%),
-          linear-gradient(145deg, color-mix(in srgb, var(--c-bg-card) 80%, white 20%), color-mix(in srgb, var(--c-bg-page) 86%, var(--brand-rail) 14%));
-      }
-
-      .theme-night .sample-orb-stage {
-        background:
-          radial-gradient(circle at 25% 25%, rgba(153, 246, 228, 0.38), transparent 24%),
-          radial-gradient(circle at 70% 38%, rgba(94, 234, 212, 0.24), transparent 28%),
-          linear-gradient(145deg, rgba(15, 23, 42, 0.92), color-mix(in srgb, var(--c-bg-page) 88%, var(--brand-rail) 12%));
-      }
-
-      .sample-orb,
-      .sample-orb::before,
-      .sample-orb::after {
-        position: absolute;
-        border-radius: 50%;
-        content: "";
-      }
-
-      .sample-orb {
-        inset: auto auto 44px 48px;
-        width: 160px;
-        height: 160px;
-        background: radial-gradient(circle at 30% 30%, var(--brand-ring), var(--brand-node) 58%, var(--brand-rail));
-        box-shadow:
-          0 30px 50px color-mix(in srgb, var(--brand-node) 30%, transparent),
-          inset -24px -24px 40px rgba(0, 0, 0, 0.12),
-          inset 12px 12px 24px rgba(255, 255, 255, 0.3);
-      }
-
-      .sample-orb::before {
-        width: 74px;
-        height: 74px;
-        left: 14px;
-        top: 18px;
-        background: rgba(255, 255, 255, 0.42);
-        filter: blur(2px);
-      }
-
-      .sample-orb::after {
-        width: 220px;
-        height: 220px;
-        left: -30px;
-        top: -34px;
-        border: 1px solid color-mix(in srgb, var(--brand-ring) 42%, transparent);
-      }
-
-      .sample-accent-pillars {
-        position: absolute;
-        top: 24px;
-        right: 24px;
+      .sample-accent-panel {
         display: grid;
-        gap: var(--space-3);
-        width: min(180px, 42%);
-      }
-
-      .sample-pillar {
-        padding: var(--space-3);
-        border-radius: 18px;
-        color: white;
-        font-size: var(--fs-sm);
-        font-weight: var(--fw-medium);
-        box-shadow: var(--shadow-2);
-      }
-
-      .sample-pillar:nth-child(1) {
-        background: var(--brand-rail);
-      }
-
-      .sample-pillar:nth-child(2) {
-        background: var(--brand-node);
-      }
-
-      .sample-pillar:nth-child(3) {
-        background: var(--brand-ring);
-        color: var(--c-bg-base-night);
+        gap: var(--space-4);
+        align-content: start;
       }
 
       .sample-toolbar {
@@ -258,23 +129,6 @@
         gap: var(--space-3);
       }
 
-      .sample-brand-button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: var(--hit-area);
-        padding: 0.75rem 1.25rem;
-        border: none;
-        border-radius: var(--radius-full);
-        background: linear-gradient(135deg, var(--brand-node), var(--brand-rail));
-        color: var(--sample-brand-text);
-        font-size: var(--fs-sm);
-        font-weight: var(--fw-semibold);
-        box-shadow:
-          0 18px 30px color-mix(in srgb, var(--brand-node) 25%, transparent),
-          inset 0 1px 0 rgba(255, 255, 255, 0.22);
-      }
-
       .sample-kpi-row {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -283,9 +137,6 @@
 
       .sample-kpi {
         padding: var(--space-4);
-        border-radius: 20px;
-        background: color-mix(in srgb, var(--c-bg-card) 88%, transparent);
-        border: 1px solid var(--c-border-light);
       }
 
       .sample-kpi strong {
@@ -293,10 +144,6 @@
         margin-bottom: 6px;
         font-size: var(--fs-xl);
         color: var(--c-text-title);
-      }
-
-      .theme-night .sample-kpi {
-        border-color: var(--c-border-medium);
       }
 
       .sample-actions {
@@ -315,21 +162,13 @@
         display: grid;
         gap: var(--space-3);
         padding: var(--space-4);
-        border-radius: 22px;
-        border: 1px solid var(--c-border-light);
-        background: color-mix(in srgb, var(--c-bg-card) 88%, white 12%);
-      }
-
-      .theme-night .sample-token-card {
-        border-color: var(--c-border-medium);
-        background: color-mix(in srgb, var(--c-bg-card) 92%, black 8%);
       }
 
       .sample-swatch {
         width: 100%;
         height: 72px;
         border-radius: 18px;
-        border: 1px solid color-mix(in srgb, var(--c-border-medium) 70%, transparent);
+        border: var(--bw-1) solid var(--c-border-light);
         background: var(--sample-swatch);
       }
 
@@ -350,42 +189,9 @@
         gap: var(--space-3);
       }
 
-      .sample-bar {
-        display: grid;
-        gap: 6px;
-      }
-
-      .sample-bar-track {
-        height: 10px;
-        border-radius: var(--radius-full);
-        background: color-mix(in srgb, var(--c-border-light) 72%, transparent);
-        overflow: hidden;
-      }
-
-      .sample-bar-fill {
-        height: 100%;
-        border-radius: inherit;
-        background: linear-gradient(90deg, var(--brand-rail), var(--brand-ring));
-      }
-
       .sample-preview-card {
         display: grid;
         gap: var(--space-4);
-        padding: var(--space-5);
-        border-radius: 24px;
-        color: var(--sample-brand-text);
-        background:
-          radial-gradient(circle at top left, rgba(255, 255, 255, 0.24), transparent 28%),
-          linear-gradient(135deg, var(--brand-node), var(--brand-rail));
-        box-shadow:
-          0 20px 40px color-mix(in srgb, var(--brand-node) 28%, transparent),
-          inset 0 1px 0 rgba(255, 255, 255, 0.28);
-      }
-
-      .sample-preview-card p,
-      .sample-preview-card small,
-      .sample-preview-card .sw-title-large {
-        color: inherit;
       }
 
       .sample-chip-row {
@@ -397,11 +203,6 @@
       .sample-type-stack {
         display: grid;
         gap: var(--space-3);
-      }
-
-      .sample-divider {
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--c-border-medium), transparent);
       }
 
       .sample-field {
@@ -446,6 +247,34 @@
         padding: 0 var(--space-2);
       }
 
+      .sample-timeline-layout {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        gap: var(--space-4);
+        align-items: start;
+      }
+
+      .sample-timeline {
+        --timeline-length: 240px;
+      }
+
+      .sample-timeline-events {
+        display: grid;
+        gap: var(--space-3);
+      }
+
+      .sample-modal-trigger-row {
+        display: flex;
+        gap: var(--space-2);
+        flex-wrap: wrap;
+      }
+
+      /* Keep page hover interactions available when modal is closed. */
+      .celadon-modal[aria-hidden="true"] .celadon-modal--overlay,
+      .celadon-modal[aria-hidden="true"] .celadon-modal--content {
+        pointer-events: none;
+      }
+
       @media (max-width: 1180px) {
         :root {
           --sample-shell-width: min(92vw, 1440px);
@@ -463,7 +292,8 @@
         .sample-highlight-grid,
         .sample-kpi-row,
         .sample-token-grid,
-        .sample-form-grid {
+        .sample-form-grid,
+        .sample-timeline-layout {
           grid-template-columns: 1fr;
         }
 
@@ -472,23 +302,11 @@
         }
 
         .sample-panel {
-          border-radius: 24px;
           padding: var(--space-5);
         }
 
-        .sample-accent-pillars {
-          position: static;
-          width: 100%;
-          margin-top: var(--space-5);
-        }
-
-        .sample-orb-stage {
-          min-height: 360px;
-        }
-
-        .sample-orb {
-          left: 24px;
-          bottom: 24px;
+        .sample-accent-panel {
+          min-height: auto;
         }
       }
     </style>
@@ -497,10 +315,12 @@
     <main class="sample-app">
       <div class="sample-dashboard">
         <section class="sample-grid sample-grid-top">
-          <article class="sample-panel sample-hero">
+          <article class="sample-panel sample-hero celadon-card celadon-card--large">
             <div class="sample-hero-copy">
               <div class="sample-stack">
-                <span class="sample-eyebrow">Celadon Showcase</span>
+                <span class="celadon-status celadon-status--outline celadon-status--info">
+                  <span class="celadon-status__text">Celadon Showcase</span>
+                </span>
                 <div class="sample-stack" style="gap: var(--space-3)">
                   <h1 class="article-title-large">Celadon Color Engine</h1>
                   <p class="article-subtitle sample-note">
@@ -512,32 +332,42 @@
               </div>
 
               <div class="sample-highlight-grid">
-                <div class="sample-stat">
+                <div class="sample-stat celadon-card">
                   <span class="sample-stat-label">System Model</span>
                   <span class="sample-stat-value">Semantic</span>
                 </div>
-                <div class="sample-stat">
+                <div class="sample-stat celadon-card">
                   <span class="sample-stat-label">Theme Mode</span>
                   <span class="sample-stat-value" id="theme-mode-label">Day</span>
                 </div>
-                <div class="sample-stat">
+                <div class="sample-stat celadon-card">
                   <span class="sample-stat-label">Platform</span>
                   <span class="sample-stat-value">Desktop</span>
                 </div>
               </div>
             </div>
 
-            <div class="sample-orb-stage">
-              <div class="sample-orb" aria-hidden="true"></div>
-              <div class="sample-accent-pillars">
-                <div class="sample-pillar">Brand rail</div>
-                <div class="sample-pillar">Brand node</div>
-                <div class="sample-pillar">Brand ring</div>
+            <div class="sample-accent-panel celadon-card celadon-card--large">
+              <p class="sw-title-small">Brand Token Hierarchy</p>
+              <p class="sw-subtitle-small sample-muted">
+                Accent tokens stay scoped to emphasis while surfaces and content keep
+                semantic neutrality.
+              </p>
+              <div class="sample-chip-row">
+                <span class="celadon-status celadon-status--outline celadon-status--info">
+                  <span class="celadon-status__text">Brand rail</span>
+                </span>
+                <span class="celadon-status celadon-status--outline celadon-status--warning">
+                  <span class="celadon-status__text">Brand node</span>
+                </span>
+                <span class="celadon-status celadon-status--subtle celadon-status--success">
+                  <span class="celadon-status__text">Brand ring</span>
+                </span>
               </div>
             </div>
           </article>
 
-          <aside class="sample-panel sample-stack">
+          <aside class="sample-panel sample-stack celadon-card celadon-card--large">
             <div class="sample-toolbar">
               <div>
                 <p class="sw-title">Theme Control</p>
@@ -564,8 +394,10 @@
               </div>
             </div>
 
-            <div class="sample-preview-card">
-              <small>Accent Application</small>
+            <div class="sample-preview-card celadon-card celadon-card--large">
+              <span class="celadon-status celadon-status--sm celadon-status--subtle celadon-status--info">
+                <span class="celadon-status__text">Accent application</span>
+              </span>
               <div class="sample-stack" style="gap: var(--space-2)">
                 <strong class="sw-title-large">Brand surfaces can feel calm, not loud.</strong>
                 <p class="sw-subtitle-small">
@@ -573,21 +405,21 @@
                   the rest of the interface stable and readable.
                 </p>
               </div>
-              <button type="button" class="sample-brand-button">
+              <button type="button" class="celadon-btn celadon-btn--primary celadon-btn--pill">
                 Launch Color Review
               </button>
             </div>
 
             <div class="sample-kpi-row">
-              <div class="sample-kpi">
+              <div class="sample-kpi celadon-card">
                 <strong>4</strong>
                 <span class="sample-muted">semantic status families</span>
               </div>
-              <div class="sample-kpi">
+              <div class="sample-kpi celadon-card">
                 <strong>3</strong>
                 <span class="sample-muted">brand accent tokens</span>
               </div>
-              <div class="sample-kpi">
+              <div class="sample-kpi celadon-card">
                 <strong>80%</strong>
                 <span class="sample-muted">viewport layout target</span>
               </div>
@@ -596,7 +428,7 @@
         </section>
 
         <section class="sample-grid sample-grid-middle">
-          <article class="sample-panel sample-stack">
+          <article class="sample-panel sample-stack celadon-card celadon-card--large">
             <div>
               <p class="sw-title">Semantic Color Configuration</p>
               <p class="sw-subtitle-small sample-muted">
@@ -606,32 +438,32 @@
             </div>
 
             <div class="sample-token-grid">
-              <div class="sample-token-card">
+              <div class="sample-token-card celadon-card">
                 <div class="sample-swatch" style="--sample-swatch: var(--c-bg-page)"></div>
                 <span class="sample-token-name">--c-bg-page</span>
                 <span class="sample-token-value" data-token-value="--c-bg-page"></span>
               </div>
-              <div class="sample-token-card">
+              <div class="sample-token-card celadon-card">
                 <div class="sample-swatch" style="--sample-swatch: var(--c-bg-card)"></div>
                 <span class="sample-token-name">--c-bg-card</span>
                 <span class="sample-token-value" data-token-value="--c-bg-card"></span>
               </div>
-              <div class="sample-token-card">
+              <div class="sample-token-card celadon-card">
                 <div class="sample-swatch" style="--sample-swatch: var(--c-text-title)"></div>
                 <span class="sample-token-name">--c-text-title</span>
                 <span class="sample-token-value" data-token-value="--c-text-title"></span>
               </div>
-              <div class="sample-token-card">
+              <div class="sample-token-card celadon-card">
                 <div class="sample-swatch" style="--sample-swatch: var(--c-text-secondary)"></div>
                 <span class="sample-token-name">--c-text-secondary</span>
                 <span class="sample-token-value" data-token-value="--c-text-secondary"></span>
               </div>
-              <div class="sample-token-card">
+              <div class="sample-token-card celadon-card">
                 <div class="sample-swatch" style="--sample-swatch: var(--c-bg-success)"></div>
                 <span class="sample-token-name">--c-bg-success</span>
                 <span class="sample-token-value" data-token-value="--c-bg-success"></span>
               </div>
-              <div class="sample-token-card">
+              <div class="sample-token-card celadon-card">
                 <div class="sample-swatch" style="--sample-swatch: var(--c-bg-info)"></div>
                 <span class="sample-token-name">--c-bg-info</span>
                 <span class="sample-token-value" data-token-value="--c-bg-info"></span>
@@ -639,7 +471,7 @@
             </div>
           </article>
 
-          <article class="sample-panel sample-stack">
+          <article class="sample-panel sample-stack celadon-card celadon-card--large">
             <div>
               <p class="sw-title">Theme Accent Usage</p>
               <p class="sw-subtitle-small sample-muted">
@@ -649,32 +481,32 @@
             </div>
 
             <div class="sample-metric-rail">
-              <div class="sample-bar">
+              <div class="celadon-card celadon-card--compact sample-stack">
                 <div class="sample-toolbar">
                   <span class="sample-token-name">Brand rail</span>
                   <span class="sample-token-value" data-token-value="--brand-rail"></span>
                 </div>
-                <div class="sample-bar-track">
-                  <div class="sample-bar-fill" style="width: 88%"></div>
-                </div>
+                <span class="celadon-status celadon-status--sm celadon-status--outline celadon-status--info">
+                  <span class="celadon-status__text">Guidance and rails</span>
+                </span>
               </div>
-              <div class="sample-bar">
+              <div class="celadon-card celadon-card--compact sample-stack">
                 <div class="sample-toolbar">
                   <span class="sample-token-name">Brand node</span>
                   <span class="sample-token-value" data-token-value="--brand-node"></span>
                 </div>
-                <div class="sample-bar-track">
-                  <div class="sample-bar-fill" style="width: 72%"></div>
-                </div>
+                <span class="celadon-status celadon-status--sm celadon-status--outline celadon-status--warning">
+                  <span class="celadon-status__text">Focus and interaction</span>
+                </span>
               </div>
-              <div class="sample-bar">
+              <div class="celadon-card celadon-card--compact sample-stack">
                 <div class="sample-toolbar">
                   <span class="sample-token-name">Brand ring</span>
                   <span class="sample-token-value" data-token-value="--brand-ring"></span>
                 </div>
-                <div class="sample-bar-track">
-                  <div class="sample-bar-fill" style="width: 94%"></div>
-                </div>
+                <span class="celadon-status celadon-status--sm celadon-status--subtle celadon-status--success">
+                  <span class="celadon-status__text">Highlight and emphasis</span>
+                </span>
               </div>
             </div>
 
@@ -693,7 +525,7 @@
               </span>
             </div>
 
-            <div class="sample-divider"></div>
+            <div class="themed-divider"></div>
 
             <div class="sample-actions">
               <button type="button" class="celadon-btn celadon-btn--primary">
@@ -705,7 +537,7 @@
               <button type="button" class="celadon-btn celadon-btn--text">
                 Text
               </button>
-              <button type="button" class="sample-brand-button">
+              <button type="button" class="celadon-btn celadon-btn--primary celadon-btn--pill">
                 Accent CTA
               </button>
             </div>
@@ -713,7 +545,7 @@
         </section>
 
         <section class="sample-grid sample-grid-lower">
-          <article class="sample-panel sample-stack">
+          <article class="sample-panel sample-stack celadon-card celadon-card--large">
             <div>
               <p class="sw-title">Typography And Surfaces</p>
               <p class="sw-subtitle-small sample-muted">
@@ -742,14 +574,14 @@
               </div>
             </div>
 
-            <div class="styled-card sample-stack">
+            <div class="celadon-card sample-stack">
               <div>
                 <p class="sw-title-small">Interface Snapshot</p>
                 <p class="sw-subtitle-small sample-muted">
                   Shared tokens power cards, labels, dividers, and controls.
                 </p>
               </div>
-              <div class="sample-divider"></div>
+              <div class="themed-divider"></div>
               <div class="sample-actions">
                 <button type="button" class="celadon-btn celadon-btn--secondary celadon-btn--small">
                   Inspect Token
@@ -761,7 +593,7 @@
             </div>
           </article>
 
-          <article class="sample-panel sample-stack">
+          <article class="sample-panel sample-stack celadon-card celadon-card--large">
             <div>
               <p class="sw-title">Input And Form Surfaces</p>
               <p class="sw-subtitle-small sample-muted">
@@ -804,7 +636,7 @@
           </article>
         </section>
 
-        <section class="sample-panel sample-stack">
+        <section class="sample-panel sample-stack celadon-card celadon-card--large">
           <div class="sample-table-caption">
             <div>
               <p class="sw-title">Token-Driven Data Surface</p>
@@ -871,6 +703,74 @@
           </div>
         </section>
 
+        <section class="sample-grid sample-grid-lower">
+          <article class="sample-panel sample-stack celadon-card celadon-card--large">
+            <div>
+              <p class="sw-title">Delivery Timeline</p>
+              <p class="sw-subtitle-small sample-muted">
+                Vertical timeline primitives can express staged rollout and release checkpoints.
+              </p>
+            </div>
+
+            <div class="sample-timeline-layout">
+              <div class="celadon-timeline celadon-timeline--medium sample-timeline" aria-hidden="true">
+                <span class="celadon-timeline__dot celadon-timeline__dot--active"></span>
+                <span class="celadon-timeline__line"></span>
+                <span class="celadon-timeline__dot celadon-timeline__dot--active"></span>
+                <span class="celadon-timeline__line"></span>
+                <span class="celadon-timeline__dot"></span>
+                <span class="celadon-timeline__line"></span>
+                <span class="celadon-timeline__dot"></span>
+              </div>
+
+              <div class="sample-timeline-events">
+                <div class="celadon-card celadon-card--compact sample-stack">
+                  <strong class="sw-title-small">Semantic Token Audit</strong>
+                  <span class="celadon-status celadon-status--sm celadon-status--subtle celadon-status--success">
+                    <span class="celadon-status__text">Completed</span>
+                  </span>
+                </div>
+                <div class="celadon-card celadon-card--compact sample-stack">
+                  <strong class="sw-title-small">Theme Night Verification</strong>
+                  <span class="celadon-status celadon-status--sm celadon-status--subtle celadon-status--info">
+                    <span class="celadon-status__text">In Progress</span>
+                  </span>
+                </div>
+                <div class="celadon-card celadon-card--compact sample-stack">
+                  <strong class="sw-title-small">Accessibility Contrast Review</strong>
+                  <span class="celadon-status celadon-status--sm celadon-status--outline celadon-status--warning">
+                    <span class="celadon-status__text">Pending</span>
+                  </span>
+                </div>
+                <div class="celadon-card celadon-card--compact sample-stack">
+                  <strong class="sw-title-small">Production Rollout</strong>
+                  <span class="celadon-status celadon-status--sm celadon-status--neutral">
+                    <span class="celadon-status__text">Scheduled</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="sample-panel sample-stack celadon-card celadon-card--large">
+            <div>
+              <p class="sw-title">Modal Interaction</p>
+              <p class="sw-subtitle-small sample-muted">
+                Modal structure, actions, and focus-safe controls are all token-driven.
+              </p>
+            </div>
+
+            <div class="sample-modal-trigger-row">
+              <button id="open-sample-modal" type="button" class="celadon-btn celadon-btn--primary">
+                Open Modal
+              </button>
+              <button type="button" class="celadon-btn celadon-btn--secondary">
+                Secondary Action
+              </button>
+            </div>
+          </article>
+        </section>
+
         <footer class="sample-footer">
           <p class="sw-subtitle-small sample-muted">
             Celadon Color Engine sample upgraded into a broader design system showcase.
@@ -887,12 +787,50 @@
       </div>
     </main>
 
+    <div
+      id="sample-modal"
+      class="celadon-modal celadon-modal--medium celadon-modal--info"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="sample-modal-title"
+      aria-hidden="true"
+    >
+      <div class="celadon-modal--overlay" data-sample-modal-close></div>
+      <div class="celadon-modal--content">
+        <div class="celadon-modal__header">
+          <h2 id="sample-modal-title" class="celadon-modal__title">Release Checkpoint</h2>
+          <button type="button" class="celadon-modal__close" data-sample-modal-close aria-label="Close modal">
+            x
+          </button>
+        </div>
+        <div class="celadon-modal__body sample-stack">
+          <p class="sw-subtitle-small">
+            This dialog demonstrates the native modal surface with semantic status cues and token-safe actions.
+          </p>
+          <span class="celadon-status celadon-status--subtle celadon-status--info">
+            <span class="celadon-status__text">Theme-safe across day/night</span>
+          </span>
+        </div>
+        <div class="celadon-modal__footer celadon-modal__footer--right">
+          <button type="button" class="celadon-btn celadon-btn--secondary" data-sample-modal-close>
+            Cancel
+          </button>
+          <button type="button" class="celadon-btn celadon-btn--primary" data-sample-modal-close>
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script>
       const body = document.body;
       const toggle = document.getElementById("theme-toggle");
       const select = document.getElementById("theme-select");
       const themeModeLabel = document.getElementById("theme-mode-label");
       const tokenValueNodes = document.querySelectorAll("[data-token-value]");
+      const openSampleModalButton = document.getElementById("open-sample-modal");
+      const sampleModal = document.getElementById("sample-modal");
+      const sampleModalCloseNodes = document.querySelectorAll("[data-sample-modal-close]");
 
       function getTokenValue(name) {
         return getComputedStyle(body).getPropertyValue(name).trim();
@@ -922,12 +860,34 @@
         syncThemeControls();
       }
 
+      function openSampleModal() {
+        sampleModal.classList.add("is-open");
+        sampleModal.setAttribute("aria-hidden", "false");
+      }
+
+      function closeSampleModal() {
+        sampleModal.classList.remove("is-open");
+        sampleModal.setAttribute("aria-hidden", "true");
+      }
+
       toggle.addEventListener("click", () => {
         applyTheme(body.classList.contains("theme-night") ? "theme-day" : "theme-night");
       });
 
       select.addEventListener("change", (event) => {
         applyTheme(event.target.value);
+      });
+
+      openSampleModalButton.addEventListener("click", openSampleModal);
+
+      sampleModalCloseNodes.forEach((node) => {
+        node.addEventListener("click", closeSampleModal);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && sampleModal.classList.contains("is-open")) {
+          closeSampleModal();
+        }
       });
 
       syncThemeControls();
