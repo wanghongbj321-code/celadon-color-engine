@@ -72,6 +72,19 @@
   --c-bg-selected: var(--c-gray-100); /* 选中态背景（Segmented Control、菜单选中项）*/
   --c-bg-disabled: var(--c-gray-300); /* 禁用态背景（如发送按钮禁用）*/
 
+  /* ===== Flyout 层语义令牌（dropdown、popover、context-menu 等浮层组件） ===== */
+  --c-bg-flyout: var(--c-bg-elev);
+  --c-border-flyout: var(--c-border-light);
+  --c-shadow-flyout: var(--shadow-3);
+  --c-divider-flyout: var(--c-divider);
+  --c-text-flyout-item: var(--c-text-body);
+  --c-text-flyout-item-strong: var(--c-text-title);
+  --c-bg-flyout-item-hover: var(--c-bg-card);
+  --c-bg-flyout-item-active: var(--c-bg-selected);
+  --c-bg-flyout-item-selected: var(--c-bg-selected);
+  --c-text-flyout-danger: var(--c-text-error);
+  --c-bg-flyout-danger-hover: var(--c-bg-error);
+
   /* ===== 链接 ===== */
   --c-link: var(--c-accent-day);
   --c-link-hover: #0f766e; /* teal-600 */

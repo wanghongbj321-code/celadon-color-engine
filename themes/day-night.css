@@ -19,8 +19,10 @@
   --c-bg-elev: var(--c-bg-g1-night); /* 浮层背景使用分层背景 */
   --c-bg-selected: rgba(255, 255, 255, 0.12); /* 选中态背景：半透明白色 */
   --c-bg-disabled: var(--c-gray-600); /* 禁用态背景 */
+  --c-bg-flyout: var(--c-gray-800);
   --c-border-light: var(--c-border-night-light);
   --c-border-medium: var(--c-border-night-dark);
+  --c-border-flyout: var(--c-gray-600);
   --c-text-secondary: var(--c-text-muted);
   --c-text-body: var(--c-body-night);
   --c-text-title: var(--c-heading-night);

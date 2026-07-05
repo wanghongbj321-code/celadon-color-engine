@@ -3,8 +3,6 @@
  * - 全局基线：html/body、文本颜色、可访问性、常用基类
  * - 仅使用语义别名，不直接使用物理灰阶
  * ======================================= */
-/* Inject Tailwind preflight in this module to satisfy Tailwind plugin */
-@tailwind base;
 @layer base {
   html {
     font-size: var(--font-size-root);

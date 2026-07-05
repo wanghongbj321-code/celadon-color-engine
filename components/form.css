@@ -229,6 +229,30 @@
     transition: border-color 0.2s ease;
     box-shadow: none;
   }
+  /* 标准控件宽度修饰（短字段/行内场景） */
+  input.celadon-input.celadon-control--standard.celadon-control--inline,
+  select.celadon-select.celadon-control--standard.celadon-control--inline,
+  textarea.celadon-textarea.celadon-control--standard.celadon-control--inline {
+    width: auto;
+  }
+  input.celadon-input.celadon-control--standard.celadon-control--w-xs,
+  select.celadon-select.celadon-control--standard.celadon-control--w-xs,
+  textarea.celadon-textarea.celadon-control--standard.celadon-control--w-xs {
+    width: 80px;
+    min-width: 80px;
+  }
+  input.celadon-input.celadon-control--standard.celadon-control--w-sm,
+  select.celadon-select.celadon-control--standard.celadon-control--w-sm,
+  textarea.celadon-textarea.celadon-control--standard.celadon-control--w-sm {
+    width: 104px;
+    min-width: 104px;
+  }
+  input.celadon-input.celadon-control--standard.celadon-control--w-md,
+  select.celadon-select.celadon-control--standard.celadon-control--w-md,
+  textarea.celadon-textarea.celadon-control--standard.celadon-control--w-md {
+    width: 120px;
+    min-width: 120px;
+  }
   input.celadon-input.celadon-control--standard:focus,
   select.celadon-select.celadon-control--standard:focus,
   textarea.celadon-textarea.celadon-control--standard:focus {
